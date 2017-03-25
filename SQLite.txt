@@ -1,0 +1,4 @@
+Introducing SQLite for Mobile Developers 2015
+Android SQLite Essentials 2014 (4.7/6)
+Using SQLite 2010 (4.1/19)
+The Definitive Guide to SQLite 2006th edition 2006 (3.9/36)

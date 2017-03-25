@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<!-- saved from url=(0081)http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows -->
+<html style="zoom: 100%; height: 100%;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Installing and Using SQLite on Windows - CodeProject</title> 
+	<link type="text/css" rel="stylesheet" href="./Installing and Using SQLite on Windows - CodeProject_files/Main.min.css">
+
+	
+
+<meta name="Description" content="When one is developing in .NET with Visual Studio and other Microsoft tools, it is easy to lose sight of alternative solutions to common problems. MS does a competent job of creating a tightly integrated development tool chain, where available MS products (both free and paid) offer reasonable defaul; Author: John Atten; Updated: 9 Dec 2014; Section: Database; Chapter: Database; Updated: 9 Dec 2014">
+<meta name="Keywords" content="SQL, Windows, Beginner, Intermediate, All-Topics, SQLite,Database,Database,Free source code, tutorials">
+<meta name="Author" content="John Atten">
+<meta name="Rating" content="General">
+<meta name="Revisit-After" content="1 days">
+<meta name="application-name" content="CodeProject">
+<meta name="google-translate-customization" content="d908bb7ce7aff658-4c2f3a504525c916-g629383f736781a8a-13">
+
+<link rel="dns-prefetch" href="http://ajax.googleapis.com/"> 
+
+<meta name="syndication-source" content="http://www.typecastexception.com/post.aspx?id=7ce0b397-b583-4461-b4df-99f8fe5c8f59">
+
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - All Topics" href="http://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=1">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - Android" href="http://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=22">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - iOS" href="http://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=25">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - C++" href="http://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=2">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - C#" href="http://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=3">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - Web" href="http://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=23">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Lounge Postings" href="http://www.codeproject.com/webservices/LoungeRSS.aspx">
+<meta name="robots" content="index, follow">
+<link rel="search" type="application/opensearchdescription+xml" title="CodeProject" href="http://www.codeproject.com/info/OpenSearch.xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--<base target="_top">--><base href="." target="_top">
+	<link rel="icon" href="http://www.codeproject.com/favicon.ico" type="image/ico">
+<link rel="shortcut icon" href="http://www.codeproject.com/favicon.ico" type="image/ico">
+<link rel="apple-touch-icon" href="http://www.codeproject.com/images/FavIcon-Apple.png" type="image/png">
+<script type="text/javascript" language="Javascript">//<![CDATA[
+function defrm () { /* thanks twitter */ document.write = ''; window.top.location = window.self.location;  setTimeout(function() { document.body.innerHTML = ''; }, 0);  window.self.onload = function(evt) { document.body.innerHTML = ''; }; }if (window.top !== window.self) {  try {  if (window.top.location.host) { /* will throw */ } else { defrm(); /* chrome */ }  } catch (ex) { defrm(); /* everyone else */ } }if (typeof(DemoUrl)!='undefined')   document.write(unescape('%3Cme')+'ta http'+'-equiv="re'+'fresh"                  con'+'tent="1;url='+DemoUrl+unescape('"%3CE'));
+(function() { 
+	var _dma = document.createElement('script');
+        _dma.type = 'text/javascript';
+        _dma.async = true;
+        _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn2.developermedia.com/a.min.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+})();
+
+//]]>
+</script><style type="text/css"></style><script type="text/javascript" async="" src="http://cdn2.developermedia.com/a.min.js"></script>
+
+	
+
+
+
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-1735123-1']);
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_setDomainName', 'www.codeproject.com']);
+	_gaq.push(['_setSessionTimeout', '1200']); 
+
+	(function () {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})(); 
+</script><script type="text/javascript" async="" src="./Installing and Using SQLite on Windows - CodeProject_files/ga.js"></script>
+
+
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="./Installing and Using SQLite on Windows - CodeProject_files/translateelement.css"><script type="text/javascript" charset="UTF-8" src="./Installing and Using SQLite on Windows - CodeProject_files/main_vi.js"></script><script type="text/javascript" charset="UTF-8" src="./Installing and Using SQLite on Windows - CodeProject_files/element_main.js"></script></head>	
+
+<body class="chrome chrome49" style="position: relative; min-height: 100%; top: 0px;" cz-shortcut-listen="true">
+
+<a class="access-link" href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows#Main"><img alt="Click here to Skip to main content" src="./Installing and Using SQLite on Windows - CodeProject_files/t.gif"></a>
+
+
+
+
+
+<div class="page-background">
+
+	
+	
+
+	
+
+	
+    <div id="ctl00_STM" class="site-top-menu fixed">
+        <div class="main-content">
+            
+
+<div class="container memberbar clearfix">
+
+	<div id="ctl00_MemberMenu_GenInfo" class="float-left">12,214,839 members (47,140 online)</div>
+
+	<div class="float-left">
+		
+	</div>
+
+	<div class="float-right">
+
+		
+
+		
+
+		
+
+			<script type="text/javascript">//<!--
+			function doSubmit(secure)
+			{
+				if (secure)
+					document.subForm.action = "https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f850834%2fInstalling-and-Using-SQLite-on-Windows"
+				else
+					document.subForm.action = "https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f850834%2fInstalling-and-Using-SQLite-on-Windows"
+				document.subForm.submit();
+				return true;
+			}//-->
+			</script>
+
+			<a name="SignUp"></a>
+			<span class="member-signin tooltip">
+				<span><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f850834%2fInstalling-and-Using-SQLite-on-Windows">Sign in</a></span>
+
+				<div class="tooltip-flyout">
+					<form name="subForm" id="subForm" action="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f850834%2fInstalling-and-Using-SQLite-on-Windows" method="post" class="tight">
+
+						
+						<input id="FormName" name="FormName" value="MenuBarForm" type="hidden">
+
+						<div>Email</div>
+						<div><input class="small-text" type="email" name="Email" id="Email"></div>
+						<div>Password</div>
+						<div><input class="small-text" type="password" name="Password" id="Password"></div>
+						<div class="action">
+							
+<script type="text/javascript">
+function Join(){
+ var url = 'http://www.codeproject.com/script/Membership/Modify.aspx?meml=' + document.subForm.Email.value;
+ document.location.href=url;return false;
+}
+document.write('<input type="button" class="create" onclick="return Join();" value="Join"');
+document.write('<input type="hidden" name="fld_quicksign" value="true" />');
+</script><input type="button" class="create" onclick="return Join();" value="Join" <input="" name="fld_quicksign">
+							<input type="submit" value="Sign in" class="signin" onclick="return doSubmit(false);">
+						</div>
+
+						<div class="container">
+							
+							&nbsp;
+							<a id="ctl00_MemberMenu_SendPassword" class="forgot float-right" href="http://www.codeproject.com/script/Membership/SendPassword.aspx?rp=%2fArticles%2f850834%2fInstalling-and-Using-SQLite-on-Windows">Forgot your password?</a>
+						</div>
+					</form>
+
+					<hr class="divider-dark">
+
+					Sign in using <a class="oauth" title="Sign in using Facebook" href="http://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=Facebook"><img src="./Installing and Using SQLite on Windows - CodeProject_files/facebook.png" style="vertical-align:middle;padding-right:3px;border:0;"></a>
+<a class="oauth" title="Sign in using Google" href="http://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=Google"><img src="./Installing and Using SQLite on Windows - CodeProject_files/google-plus.png" style="vertical-align:middle;padding-right:3px;border:0;"></a>
+<a class="oauth" title="Sign in using Linkedin" href="http://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=LinkedIn"><img src="./Installing and Using SQLite on Windows - CodeProject_files/linkedin.png" style="vertical-align:middle;padding-right:3px;border:0;"></a>
+<a class="oauth" title="Sign in using Microsoft" href="http://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=Microsoft"><img src="./Installing and Using SQLite on Windows - CodeProject_files/microsoft.png" style="vertical-align:middle;padding-right:3px;border:0;"></a>
+
+				</div>
+            </span>
+		
+	</div>
+</div>
+        </div>
+    </div>
+
+	
+    <div id="ctl00_SH" class="site-header fixed">
+        <div class="main-content">
+            <div class="logo"><a href="http://www.codeproject.com/"><img id="ctl00_Logo" tabindex="1" title="CodeProject" src="./Installing and Using SQLite on Windows - CodeProject_files/logo250x135.gif" alt="Home" style="height:135px;width:250px;border-width:0px;"></a></div>
+            <div class="promo"><div class="msg-728x90" data-format="728x90" data-type="ad" data-publisher="lqm.codeproject.site" data-zone="Database/Database/General" data-tags="SQL, Windows, Beginner, Intermediate, All-Topics, SQLite,rating4.5"></div></div>
+        </div>
+    </div>
+
+	<a href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows#Main"><img alt="Click here to Skip to main content" class="access-link" src="./Installing and Using SQLite on Windows - CodeProject_files/t.gif"></a>
+
+	
+	<div id="ctl00_TPR" class="sub-headerbar clearfix fixed">
+    <div class="float-right">
+		
+
+<div class="searchbar">
+
+<form method="get" action="http://www.codeproject.com/search.aspx?sbo=kw" name="Search" class="tight">
+
+
+<table border="0" cellspacing="0" cellpadding="0" class="search"><tbody><tr><td><input tabindex="2" class="search  subdue" id="sb_tb" value="" name="q"></td><td><input type="image" src="./Installing and Using SQLite on Windows - CodeProject_files/search.gif"></td></tr></tbody></table>
+
+<div class="hover-container">
+	<div id="SearchFilter" class="search-advanced small-text align-left" style="display: none;">
+	<b>Search within:<br></b>
+		
+		<input type="radio" id="sb_kw" name="sbo" value="kw" checked="true"><label for="sb_kw">Articles</label><br>
+<input type="radio" id="sb_qa" name="sbo" value="qa"><label for="sb_qa">Quick Answers</label><br>
+<input type="radio" id="sb_fm" name="sbo" value="fm"><label for="sb_fm">Messages</label><br>
+
+
+		
+		
+
+		
+		
+	</div>
+</div>
+</form>
+
+</div>
+    </div>
+    <div class="float-left">
+		
+
+<div class="navbar clearfix">
+<ul class="navmenu openable">
+
+<li class="desktop-only"><a id="ctl00_TopNavBar_Home" href="http://www.codeproject.com/">home</a>
+
+
+</li><li class=""><a id="ctl00_TopNavBar_Art" class="down selected" href="http://www.codeproject.com/script/Articles/Latest.aspx">articles</a>
+
+	<ul>
+		<li class=""><a id="ctl00_TopNavBar_ArtTopicList" class="fly" onmouseover="navBarMenu.ShowMap(this, &#39;ctl00_TopNavBar_MapFlyout&#39;);" href="http://www.codeproject.com/script/Content/SiteMap.aspx">Chapters and Sections<span class="has-submenu">&gt;</span></a><ul id="ctl00_TopNavBar_MapFlyout">
+			<li>
+				<div id="siteMap">
+					<img src="./Installing and Using SQLite on Windows - CodeProject_files/animated.gif" alt="loading" style="margin:150px;width:100px;height:100px;">
+				</div>
+			</li>
+			</ul>
+		</li>
+		<li><a id="ctl00_TopNavBar_ArtSearch" class="fly break" href="http://www.codeproject.com/search.aspx?sbo=kw">Search</a></li>
+		<li><a id="ctl00_TopNavBar_ArtLatestArts" class="fly" href="http://www.codeproject.com/script/Articles/Latest.aspx?at=1,3,7">Latest Articles</a></li>
+		<li><a id="ctl00_TopNavBar_ArtLatestTips" class="fly" href="http://www.codeproject.com/script/Articles/Latest.aspx?at=6">Latest Tips/Tricks</a></li>
+		<li><a id="ctl00_TopNavBar_ArtTop" class="fly" href="http://www.codeproject.com/script/Articles/TopArticles.aspx?ta_so=5">Top Articles</a></li>
+		<li><a id="ctl00_TopNavBar_ArtBeginner" class="fly" href="http://www.codeproject.com/search.aspx?sbo=kw?aidlst=152&amp;sa_us=True">Beginner Articles</a></li>
+		<li><a id="ctl00_TopNavBar_ArtBlogArticles" class="fly break" href="http://www.codeproject.com/script/Articles/BlogArticleList.aspx">Technical Blogs</a></li>
+		<li><a id="ctl00_TopNavBar_ArtGuide" class="fly" href="http://www.codeproject.com/info/Submit.aspx">Posting/Update Guidelines</a></li>
+		<li><a id="ctl00_TopNavBar_ArtHelpForum" class="fly" href="http://www.codeproject.com/Forums/1641/Article-Writing.aspx">Article Help Forum</a></li>
+		<li><a id="ctl00_TopNavBar_ArtCompetition" class="fly break" href="http://www.codeproject.com/script/Awards/CurrentCompetitions.aspx?cmpTpId=1">Article Competition</a></li>
+		<li><a id="ctl00_TopNavBar_ArtPostArticle" class="fly highlight1" href="http://www.codeproject.com/script/Articles/Submit.aspx">
+			<img src="./Installing and Using SQLite on Windows - CodeProject_files/write13.png" width="13px" height="13px"> Submit an article or tip
+			</a></li>
+		<li><a id="ctl00_TopNavBar_ArtPostBlog" class="fly highlight2" href="http://www.codeproject.com/script/Articles/BlogFeed.aspx">
+			<img src="./Installing and Using SQLite on Windows - CodeProject_files/write13.png" width="13px" height="13px"> Post your Blog
+			</a></li>		<li class="last"></li>
+	</ul>
+
+</li>
+
+
+
+<li class="">
+<a id="ctl00_TopNavBar_Answers" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active">
+    <span class="desktop-only tablet-only">quick answers</span><span class="mobile-only">Q&amp;A</span>
+</a>
+	<ul>
+		<li id="ctl00_TopNavBar_AQL"><a id="ctl00_TopNavBar_ArticleQuestion" class="fly highlight1" href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows#_comments">
+			<img src="./Installing and Using SQLite on Windows - CodeProject_files/write13.png" width="13px" height="13px"> Ask a Question about this 
+			article</a>
+		</li>
+
+		<li><a id="ctl00_TopNavBar_QAAsk" class="fly highlight2" href="http://www.codeproject.com/Questions/ask.aspx"><img src="./Installing and Using SQLite on Windows - CodeProject_files/write13.png" width="13px" height="13px"> Ask a Question</a></li>
+
+		
+		<li><a id="ctl00_TopNavBar_QAUnanswered" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=unanswered">View Unanswered Questions</a></li>
+		<li><a id="ctl00_TopNavBar_QALatest" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active">View All Questions...</a></li>
+		
+				<li><a id="ctl00_TopNavBar_QATR_ctl00_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=120" style="padding-left:30px">Linux questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl01_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=81" style="padding-left:30px">C# questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl02_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=85" style="padding-left:30px">ASP.NET questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl03_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=93" style="padding-left:30px">SQL questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl04_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=842" style="padding-left:30px">VB.NET questions</a></li>
+			
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+
+
+<li class=""><a id="ctl00_TopNavBar_Forums" href="http://www.codeproject.com/script/Forums/List.aspx">
+        <span class="desktop-only tablet-only">discussions</span><span class="mobile-only">forums</span>
+</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_MessageBoardsAll" class="fly" href="http://www.codeproject.com/script/Forums/List.aspx">All Message Boards...</a></li>
+		<li class=""><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1580997/Application-Lifecycle.aspx">Application Lifecycle<span class="has-submenu">&gt;</span></a>
+<ul class="openable"><li><a class="fly" href="http://www.codeproject.com/Forums/1533717/Running-a-Business.aspx">Running a Business</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/1533716/Sales-Marketing.aspx">Sales / Marketing</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/1651/Collaboration-Beta-Testing.aspx">Collaboration / Beta Testing</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/3304/Work-Issues.aspx">Work  Issues</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/369270/Design-and-Architecture.aspx">Design and Architecture</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/12076/ASP-NET.aspx">ASP.NET</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1580226/JavaScript.aspx">JavaScript</a>
+</li>
+<li class=""><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1647/C-Cplusplus-MFC.aspx">C / C++ / MFC<span class="has-submenu">&gt;</span></a>
+<ul class="openable"><li><a class="fly" href="http://www.codeproject.com/Forums/4486/ATL-WTL-STL.aspx">ATL /  WTL / STL</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/3785/Managed-Cplusplus-CLI.aspx">Managed C++/CLI</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1649/Csharp.aspx">C#</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1627782/Free-Tools.aspx">Free Tools</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1827460/Objective-C-and-Swift.aspx">Objective-C and Swift</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1725/Database.aspx">Database</a>
+</li>
+<li class=""><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/186301/Hardware-Devices.aspx">Hardware &amp; Devices<span class="has-submenu">&gt;</span></a>
+<ul class="openable"><li><a class="fly" href="http://www.codeproject.com/Forums/1644/System-Admin.aspx">System Admin</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1606152/Hosting-and-Servers.aspx">Hosting and Servers</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1643/Java.aspx">Java</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1650/NET-Framework.aspx">.NET Framework</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1848626/Android.aspx">Android</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1876716/iOS.aspx">iOS</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/13695/Mobile.aspx">Mobile</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1540733/SharePoint.aspx">SharePoint</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1004257/Silverlight-WPF.aspx">Silverlight / WPF</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1646/Visual-Basic.aspx">Visual Basic</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1640/Web-Development.aspx">Web Development</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/suggestions.aspx">Site Bugs / Suggestions</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1652005/Spam-and-Abuse-Watch.aspx">Spam and Abuse Watch</a>
+</li>
+
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+<li class="desktop-only"><a id="ctl00_TopNavBar_Features" href="http://www.codeproject.com/Feature/">features</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_Comps" class="fly" href="http://www.codeproject.com/script/Awards/CurrentCompetitions.aspx?cmpTpId=1&amp;awsac=true">Competitions</a></li>
+		<li><a id="ctl00_TopNavBar_News" class="fly" href="http://www.codeproject.com/script/News/List.aspx">News</a></li>
+		<li><a id="ctl00_TopNavBar_Insider" class="fly" href="http://www.codeproject.com/Feature/Insider/">The Insider Newsletter</a></li>
+    	<li><a id="ctl00_TopNavBar_DailyBuild" class="fly" href="http://www.codeproject.com/Feature/DailyBuild">The Daily Build Newsletter</a></li>
+		<li><a id="ctl00_TopNavBar_Newsletters" class="fly" href="http://www.codeproject.com/script/Mailouts/Archive.aspx?mtpid=1">Newsletter archive</a></li>
+		<li><a id="ctl00_TopNavBar_Surveys" class="fly" href="http://www.codeproject.com/script/Surveys/List.aspx">Surveys</a></li>
+		<li><a id="ctl00_TopNavBar_Showcase" class="fly" href="http://www.codeproject.com/KB/showcase/">Product Showcase</a></li>
+		<li><a id="ctl00_TopNavBar_Research" class="fly" href="http://www.codeproject.com/script/ResearchLibrary/Index.aspx">Research Library</a></li>
+
+		<li><a id="ctl00_TopNavBar_Stuff" class="fly" href="http://www.codeproject.com/Info/Stuff.aspx">CodeProject Stuff</a></li>
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+
+<li class=""><a id="ctl00_TopNavBar_Lounge" href="http://www.codeproject.com/Lounge.aspx">
+            <span class="desktop-only tablet-only">community</span><span class="mobile-only">lounge</span>
+</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_WhosWho" class="fly" href="http://www.codeproject.com/script/Membership/Profiles.aspx">Who's Who</a></li>
+		<li><a id="ctl00_TopNavBar_MVPs" class="fly break" href="http://www.codeproject.com/script/Awards/MVPWinners.aspx">Most Valuable Professionals</a></li>
+		
+
+		<li><a id="ctl00_TopNavBar_LoungeLnk" class="fly highlight2" href="http://www.codeproject.com/Lounge.aspx">The Lounge &nbsp;</a></li>
+		<li><a id="ctl00_TopNavBar_InsiderLnk" class="fly" href="http://www.codeproject.com/Insider.aspx">The Insider News</a></li>
+		<li><a id="ctl00_TopNavBar_WeirdWonderful" class="fly" href="http://www.codeproject.com/Feature/WeirdAndWonderful.aspx">The Weird &amp; The Wonderful</a></li>
+		<li><a id="ctl00_TopNavBar_SoapBoxLnk" class="fly" href="http://www.codeproject.com/Forums/1536756/The-Soapbox.aspx">The Soapbox</a></li>
+		<li><a id="ctl00_TopNavBar_PRLnk" class="fly break" href="http://www.codeproject.com/Forums/1738007/Press-Releases.aspx">Press Releases</a></li>
+
+		
+		<li class=""><a class="fly" href="http://www.codeproject.com/Forums/1580229/Hindi.aspx">Non-English Language
+			<span class="has-submenu">&gt;</span></a>
+		<ul>
+		<li><a class="fly" href="http://www.codeproject.com/Forums/1580229/Hindi.aspx">General Indian Topics</a></li>
+		<li><a class="fly" href="http://www.codeproject.com/Forums/1580230/Chinese.aspx">General Chinese Topics</a></li>
+		</ul>
+		</li><li class="last"></li>
+		
+	</ul>
+
+</li>
+
+
+<li class="desktop-only tablet-only" style="margin-left:20px"><a id="ctl00_TopNavBar_Help" href="http://www.codeproject.com/KB/FAQs/">help</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_HelpWhatIs" class="fly" href="http://www.codeproject.com/info/guide.aspx">What is 'CodeProject'?</a></li>
+		<li><a id="ctl00_TopNavBar_HelpGeneral" class="fly break" href="http://www.codeproject.com/KB/FAQs/">General FAQ</a></li>
+		<li><a id="ctl00_TopNavBar_HelpPostQuestion" class="fly break highlight2" href="http://www.codeproject.com/Questions/ask.aspx">Ask a Question</a></li>
+		<li><a id="ctl00_TopNavBar_HelpBugs" class="fly" href="http://www.codeproject.com/suggestions.aspx">Bugs and Suggestions</a></li>
+		<li><a id="ctl00_TopNavBar_HelpArticles" class="fly" href="http://www.codeproject.com/Forums/1641/Article-Writing.aspx">Article Help Forum</a></li>
+		<li><a id="ctl00_TopNavBar_HelpSiteMap" class="fly" href="http://www.codeproject.com/script/Content/SiteMap.aspx">Site Map</a></li>
+		<li><a id="ctl00_TopNavBar_HelpAdvertise" class="fly" href="http://developermedia.com/">Advertise with us</a></li>
+		<li><a id="ctl00_TopNavBar_HelpJobs" class="fly" href="http://www.codeproject.com/info/Jobs/">Employment Opportunities</a></li>
+		<li><a id="ctl00_TopNavBar_HelpAboutUs" class="fly" href="http://www.codeproject.com/info/about.aspx">About Us</a></li>
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+</ul>
+
+</div>
+    </div>
+	<div class="sub-headerbar-divider"></div>
+	</div>		
+	
+
+	<div id="A" class="container-content-wrap fixed"> 
+
+	<div itemscope="" itemtype="http://schema.org/Article" class="container-content"> 
+
+
+		<div class="clearfix">
+			<div class="container-breadcrumb float-left ">
+				<div><a href="http://www.codeproject.com/script/Content/SiteMap.aspx">Articles</a> » <a href="http://www.codeproject.com/Chapters/4/Database.aspx">Database</a> » <a href="http://www.codeproject.com/KB/database/"><span itemprop="articleSection">Database</span></a> » <a href="http://www.codeproject.com/KB/database/#General">General</a></div>
+			</div>
+
+			<div class="float-left">
+				
+			</div>
+
+			<div class="edit-links float-right">
+				
+
+
+ 
+&nbsp;
+
+
+
+
+
+
+
+
+
+
+			</div>
+
+			<div class="article-nav float-right">
+					
+		        
+		        
+					
+
+                
+				
+
+<a id="ctl00_ActionLinks_BookmarkMd_ImgBt" title="Bookmark" alternatetext="Bookmark" name="bm_850834_2" onclick="return bookmarkMe(850834,2,&#39;/script/Bookmarks/Ajax/Add.aspx?obid=850834&amp;obtid=2&amp;action=AddBookmark&amp;bio=true&amp;bis=medium&#39;,&#39;medium&#39;);" href="http://www.codeproject.com/script/Bookmarks/Add.aspx?obid=850834&amp;obtid=2&amp;action=AddBookmark&amp;bio=true&amp;bis=medium" style="display:inline-block;height:24px;width:24px;"><img title="Bookmark" src="./Installing and Using SQLite on Windows - CodeProject_files/bookmark24.png" alt="" style="border-width:0px;"></a>
+
+
+<span id="ctl00_ActionLinks_BookmarkMd_StatusMsg" class="tiny-text" style="display:none" name="bm_850834_2"></span>
+<a id="ctl00_ActionLinks_PrintMd" href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows?display=Print">
+	<img src="./Installing and Using SQLite on Windows - CodeProject_files/print24.png" title="Print" width="24px" height="24px" style="border:0">
+</a>
+			</div>
+		</div>
+
+		<table class="extended container-article-parts" cellpadding="0" cellspacing="0">
+        <tbody><tr valign="top">
+		<td width="117px" class="article-wing-left">
+
+			<div id="ctl00_Nav" class="container-article-tabs stuck" style="position: fixed; top: 10px; left: 155.5px;">
+    			
+
+<div class="tabs">
+	<div class="selected">Technical Blog<div class="original"><a href="http://www.typecastexception.com/post.aspx?id=7ce0b397-b583-4461-b4df-99f8fe5c8f59">&nbsp;&nbsp;View Blog</a>&nbsp;</div></div><div class="unselected"><a href="http://www.codeproject.com/script/Articles/ViewDownloads.aspx?aid=850834">Browse Code</a></div><div class="unselected"><a href="http://www.codeproject.com/script/Articles/Statistics.aspx?aid=850834">Stats</a></div><div class="unselected"><a href="http://www.codeproject.com/script/Articles/ListVersions.aspx?aid=850834">Revisions (5)</a></div><div class="unselected"><a href="http://www.codeproject.com/script/Articles/ListAlternatives.aspx?aid=850834">Alternatives</a></div>
+
+	<div class="unselected"><a href="http://www.codeproject.com/Articles/850834/WebControls/#_comments" id="ctl00_ArticleTabs_CommentLink" class="anchorLink">Comments 
+        <span id="ctl00_ArticleTabs_CmtCnt">(5)</span></a>
+	</div>
+</div>	
+
+
+				<a id="ctl00_AddAlternative" title="Write a related article about upgrades or translate this into a different language." class="add-item" href="http://www.codeproject.com/script/Articles/SubmissionWizard.aspx?at=1&amp;apid=850834">Add your own<br>alternative version</a>
+
+			    <div class="tags"> 
+                    <h4>Tagged as</h4>
+                    
+                    <div class="tags">
+<span class="t"><a href="http://www.codeproject.com/search.aspx?sbo=kw&amp;aidlst=93">SQL</a></span><span class="t"><a href="http://www.codeproject.com/search.aspx?sbo=kw&amp;aidlst=94">Windows</a></span><span class="t"><a href="http://www.codeproject.com/search.aspx?sbo=kw&amp;aidlst=1198">SQLite</a></span><span class="t"><a href="http://www.codeproject.com/search.aspx?sbo=kw&amp;aidlst=301">All-Topics</a></span></div>
+			    </div>
+                
+
+                <div class="stats">
+                <h4>Stats</h4>
+                <div id="ctl00_ArtStats"><div class="stats"><div>38.1K views</div><div>48 bookmarked</div></div></div>
+                </div>
+
+                <div class="subdue padded-top" title="Date First posted">Posted 
+                    <span itemprop="datePublished" content="2014-12-07">7 Dec 2014</span></div>
+
+                
+			</div>
+
+		</td>
+		<td>
+			
+			<div id="AT" class="container-article  fixed"> 
+
+				<div class="article">
+
+					<form name="aspnetForm" method="post" action="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows" id="aspnetForm" style="margin:0;padding:0">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="UpRDO1/1Nj6SSkpCP+cSMM2R/Blyy0+2omAJWz/Nuzf2YE3qFhaux0VMp62VvsEgQPiDizJMOKY+p1+D8ZnvNaz8ZXoEeksvPznjPvWXtR/9oQbF3I2pTDoMT5Tm2clbTSX1DSKI+MbaC97v1mfbxnEEzpnx6Dt2X2K16LAjaCBDoxExilw3DfVg/TW0vMCyvbxLwVpjF5VWxuD7WqbgT69plnQKO5rQVWwB+j0hKGwxi/conrh+hwAzFWUJg9s80aR3HprfHMw3XBcvqMkqXbyQY8ETSD66ayeyJCawy+xZMIR85QZOfkZ49VWQ+AjjGqBNA6QkY4tQoIEYReQkpa+3fnJt5hdJu0IPERYuRQZuQtWCjgYBDW5+NI2oCgzgz1yhgbVm7IyqojnreveaLBNoGwO9j1oYvK2a7GK+s+CCetzBi0JlD+Wq38bT/VLNiNtWgJkawphdLGE8Ehor2fwu/jb3plzrfvTQbA1lApp5OCuvFK/+dHqmdI8e1LTQ125kIso+yPh12HB2Zf9ei5ORFTHmOajvgd/gvv3PabdtF3xHhx4rSQel1MnxMC90iLkaqjHyO7lYTBjnXvBu4phSC7QSr3dhpCme1H3yAM/0pWQMxxRaNwYpD9cXudrSG/0ZMOtQspfR1b7C8/VfDcV7/EOrkXBUlgsXfO1CPQ+v7I5ZtpX+yt96rQAWkF5xac8/ALjN/qMD+zhd0pZAbaGiA4430dsuL6NpBur88MSi99wRjobM6FemGegI+BgwzK/7wcxgkXbr+lUQQQwxDG8pFa2m6QOrpreWm/Z8ux+Q7N+LarBzqx2THpT1LrRsJpCRA8ZjHYfa5TGL406LcbC5gLfv3tQABSmHmWyCg0MbtxdRm+2tlmRgVW4msfVCPuduz36kQnAZF4sNyktqu1Gfihol8pxVwCP9ZwgGa2Nwg+totZBAoxedTYYjRd94aLNmELXNuXVa3q9O7UDPdlycEiNvec+1heIkPnXiktXs57GClqSTZjKNfKzOwX4Pn18EYR7wd+ypJ3qtEDN1maWjN5Ua/9od93PWVPHl9i9T3jejgLCwYNTZIhqdD/Ug/McMzzLRxClSkfAMlo4k+yY/w1Zn4uNMjfJ1UYsEUUlteqDFrIesPOR6eq6omprIeLt2EXDL5arQWNIiW/2EFWO/r0OoWB0oRRZq5UxrZUYEK3QV/nr+ndV0F6W8VBMZq/R/rjBkC9980i1yrH7A+svWuaZqMtfCeLJDgQvJbR1zVP9Q74F2Uu2P9OwV2peIQTX/0AzSD8qfylhW9jWd3w/6MjUekwkFGxMIMztFkgIhM+NHWEyYGb1ZvKkclK4dYe56sBU8/6AW37zbznee8dm8jxXEaOh57TRFIuET+/aoTcTSR6OUMIyfydObLmuUOlt0z4xlyDkUnwxyPIfJb5DH7jNp9qKwCjmcQoOwzNER6P/jVhkU8WBbNViP3/iwQYdPON6+qd1atInCFI5X3SEft0dsi9+SYJOvFJ1WLmyAY3T67zmnwHZ5qYPGWe5SzALUVq6hJ22tOjDbL2zwBmHJ2kgyLDi++5j2ooEkaKkxnkLtW8sxbiQJJB8p5rBpSWB2ZnjO2Rsp07/mrlirWxB4jZ+sZzU9SN1DB79SG6ETmXmr3uu+zPaN7nR2+/3ltSlHxSdy/eFd4kIFGqKHAQLQ/3mGuuDKvTW+0oQBHYUtftM55B+NH2lDdylno6wqJLkcE62rsey8XpHBOK2xakAT08ykadSA22P+tlPOjbFtadlxppvZBl0k+TXaWwsnv9bmgPIzT729GqR6mUJAkxYxWV3LonLLy5tUTlP2uG3+if8JZY+QRsfv6tea6bHvOvUAOwEXo9hf5tQqxTmCG2mGnQWod54PxeAWjHwQnoy7c3NLUTNrQHuExMNDh7QNGPKx7mxz8ENEGR1nh3jaG0zIQn/Neuu/nwhbUjj1tWUTs2cFmtBmHtoI94fn04IRUfEqacPHnif820HN+0LBOH8WUVOSOX3pzgZok40+nK8fRqhA3PaJO4GB0B9hKrT2dwGAP0KkjhC5kU8IwhPmz+pZ1Rr2GK0Xp/OHnTr/YLtXjrphLEEuT9kN2rxtQqFndn+MgdMy61DwINdYdyNmFJz9M8g7vduqv7NJEvzy3Q7gZJEYADIgUZKnqbvcGn+FcvBFGSm5k6tN9QIVWE89t6lMe147aTfnH16HskjT4s0zp9qTHhCfz2rP4m70O1hbysdt1hOVCSFAOWyc7Dupn4xRFrnx42bIWtA+fk+bt2rjjnJEBRqw+/cU5b0QS6tJbUeltod3RPLqKf5vsTGA30tKhgNEu6H+jcb5wNTj9h8snie4F5tE9MxdBcwhADkwJLc6EKLUktQk7GzgMGvUhWXjwH5UyDswk3KzTU3SM628fc0ANXPBKZcipg3DBHKgcg+Vms4U9XFD4GAJt4cb+pyk8PEyxHPS9mhbUzFFNUGCCsw6mvLqNNzEybGaTiRcqpYxX68GLnoQh9wmGTIT/yM0TW908MbHSJhL7WPCh8YrRwoZLHOgoo2OPO+EU+rbw55fl+tSEoCh5LyRDVtlrk2So5BGtRWKApK7Ogz/lCq3QjMs/zP4XDozj/bR4ik3B96SeSC72G18aE+0m2dPkzLehZj/iB1LfzM2Zba3INHcpZ0SBO8OR9AIHZGUgHWnnG0LcyOKXmDBi6+TUASE1kkYfHEesMP6aWDrYObkQracsNvgy0yHBd7nWobREruhGV1ZasCLoLFEAELYRnAfuQVZzGsWz5gA2GQ4OZi48eipWhDApb4Qs3INguZk1uCyRH2n+Y508ukZiYDabmzRceuPOlfgirx8DF4dlGHGnZp8b6uUm1EQgvRy03QFH+3AS0G8RSWpH7B1XLqvFCko6KqEN0wZ5IYnVuVxevsOYnXXzmKR">
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="10C1FD69">
+</div>
+
+					
+					 
+					<div class="header">
+					    <a name="Main"></a>
+
+					    
+					    <a name="_articleTop" id="_articleTop"></a>
+					    <div class="title">
+					        
+					        <h1 id="ctl00_ArticleTitle" itemprop="name">Installing and Using SQLite on Windows</h1> 
+					    </div>
+
+                        <div style="height:34px">
+					        
+					        <div class="entry float-left">
+                                <img src="./Installing and Using SQLite on Windows - CodeProject_files/{9d8605af-cd1a-452b-9858-837bf9aa266c}.png" id="ctl00_avatar" class="float-left avatar">
+                                <div class="float-left">
+
+						            <span class="author"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=6750249" rel="author"><span itemprop="author" itemscope="" itemtype="http://schema.org/Person"><span itemprop="name">John Atten</span></span></a></span>, 
+						            <span class="date" itemprop="dateModified" title="Date last updated" content="2014-12-09 09:19:00">
+							            9 Dec 2014</span>
+			
+                                    <a id="ctl00_LicenseLink" title="The Code Project Open License (CPOL)" class="license" href="http://www.codeproject.com/info/cpol10.aspx">CPOL</a><div id="ctl00_CurRat" class="tooltip anchorLink" style="cursor:pointer;margin-top: 5px" name="CurRat_850834">
+				
+							            
+
+<table cellpadding="0" cellspacing="0" class="small-text" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating"> 
+<tbody><tr>
+	
+	<td class="nowrap">
+
+		
+			<meta itemprop="bestRating" content="5"> 
+			<meta itemprop="worstRating" content="1">
+		
+
+		<span id="ctl00_ArticleRating_VI">
+		<div class="nowrap rating-stars-medium" style="height:18px;width:80px;position:relative;">
+	<div class="clipped align-left float-left" style="height:16px;width:78px;">
+		<img src="./Installing and Using SQLite on Windows - CodeProject_files/stars-fill-md.png" style="border-width:0px;">
+	</div><div class="clipped" style="height:16px;width:2px;position:relative;">
+		<img src="./Installing and Using SQLite on Windows - CodeProject_files/stars-empty-md.png" style="border-width:0px;position:absolute;top:0;right:0;">
+	</div>
+</div>
+		</span>
+
+		
+	</td>
+	
+	<td id="ctl00_ArticleRating_VR" class="nowrap">
+		&nbsp;
+		<span id="ctl00_ArticleRating_VotesR">&nbsp;<span itemprop="ratingValue" class="rating">4.91</span> (<span itemprop="ratingCount" class="count">24</span> votes)</span>
+		
+	</td>
+
+</tr>
+
+</tbody></table>
+
+
+							            <div id="ctl00_RB" class="speech-bubble-container-up">
+								            <div class="speech-bubble-up" style="width:150px !important">
+									                        
+<div>
+<table class="feature" width="100%" height="50px" title="Voting Distribution. Recent data only" cellpadding="0" cellspacing="0"><tbody><tr class="chart-row"><td class="chart-column"><span title="0 votes">1</span></td>
+<td class="chart-column"><span title="0 votes">2</span></td>
+<td class="chart-column"><span title="0 votes">3</span></td>
+<td class="chart-column"><div><img src="./Installing and Using SQLite on Windows - CodeProject_files/pollcol.gif" width="20pxpx" height="10px" border="0px" alt="4 votes, 16.7%" title="4 votes, 16.7%"></div><span title="4 votes">4</span></td>
+<td class="chart-column"><div><img src="./Installing and Using SQLite on Windows - CodeProject_files/pollcol.gif" width="20pxpx" height="50px" border="0px" alt="20 votes, 83.3%" title="20 votes, 83.3%"></div><span title="20 votes">5</span></td>
+</tr></tbody></table><div class="small-text align-center">4.91/5 - 24 votes</div><div class="small-text align-center subdue">μ 4.91, σ<sub>a</sub> 1.01 [<a href="http://www.codeproject.com/KB/FAQs/RatingReputationFAQ.aspx#noisefilter">?</a>]</div>
+</div>
+								            </div>
+								            <div class="speech-bubble-pointer-up">
+									            <div class="speech-bubble-pointer-up-inner"></div>
+								            </div>
+							            </div>
+						            </div>
+                                </div>
+					        </div>
+
+                            
+						    <div id="ctl00_RateArticleRow" class="float-right align-right voting-bar">
+						        <div id="ctl00_RateArticle_RateItemWrapper" class="small-text" name="RateItem_850834">
+
+	<table width="100%" cellpadding="0" cellspacing="0" class="small-text">
+	<tbody><tr>
+		<td id="ctl00_RateArticle_VoteResultDiv" class="rating-result align-right">
+			<span class="align-right"></span>
+			<img class="loaderImg" width="16px" alt="loading..." height="16px" src="./Installing and Using SQLite on Windows - CodeProject_files/animated_loading_blue.gif" style="display:none;"> 
+		</td>
+
+	
+		<td class="voteTbl" style="white-space:nowrap" align="right">
+			<table class="small-text">
+			<tbody><tr>
+				<td id="ctl00_RateArticle_RateText" class="rating-prompt">
+					Rate this:
+				</td>
+
+				
+				<td id="ctl00_RateArticle_VoteFormDiv" class="nowrap rating-stars-voter-large">
+					
+
+					<span id="ctl00_RateArticle_RB" class="tooltip ajaxHist radio voting">
+						<span id="ctl00_RateArticle_VoteRBL"><input id="ctl00_RateArticle_VoteRBL_0" type="radio" name="ctl00$RateArticle$VoteRBL" value="1" style="display: none;"><input id="ctl00_RateArticle_VoteRBL_1" type="radio" name="ctl00$RateArticle$VoteRBL" value="2" style="display: none;"><input id="ctl00_RateArticle_VoteRBL_2" type="radio" name="ctl00$RateArticle$VoteRBL" value="3" style="display: none;"><input id="ctl00_RateArticle_VoteRBL_3" type="radio" name="ctl00$RateArticle$VoteRBL" value="4" style="display: none;"><input id="ctl00_RateArticle_VoteRBL_4" type="radio" name="ctl00$RateArticle$VoteRBL" value="5" style="display: none;"></span> 
+
+						
+					<div class="rating-star-block"><a href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows#" rating="1" class="star outline" title="vote 1">vote 1</a><a href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows#" rating="2" class="star outline" title="vote 2">vote 2</a><a href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows#" rating="3" class="star outline" title="vote 3">vote 3</a><a href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows#" rating="4" class="star outline" title="vote 4">vote 4</a><a href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows#" rating="5" class="star outline" title="vote 5">vote 5</a></div></span>
+
+				</td>
+
+				
+				<td style="padding-left:5px">	
+					<input type="submit" name="ctl00$RateArticle$SubmitRateBtn" value="Vote!" id="ctl00_RateArticle_SubmitRateBtn" class="button" style="display: none;">
+				</td>
+			</tr>
+			</tbody></table>
+			
+		</td>
+	</tr>
+	</tbody></table>
+	<div class="hover-container">
+		
+        <div id="ctl00_RateArticle_RSU" class="rating-comment align-left float-right">
+            <div class="padded">
+            Please <a id="ctl00_RateArticle_SignUp" href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f850834%2fInstalling-and-Using-SQLite-on-Windows">Sign up or sign in</a> to vote.
+            </div>
+        </div>
+	</div>
+</div>
+						    </div>
+						    	
+                        </div>
+
+   					    
+                        <div id="ctl00_description" class="summary" itemprop="headline">When one is developing in .NET with Visual Studio and other Microsoft tools, it is easy to lose sight of alternative solutions to common problems. MS does a competent job of creating a tightly integrated development tool chain, where available MS products (both free and paid) offer reasonable defaul</div><span id="ctl00_thumbnailUrl" class="date" itemprop="image" content="https://codeproject.global.ssl.fastly.net/script/Articles/Images/blog100x80.png"></span>			
+
+                    </div>
+                    
+					
+					
+
+					
+
+					
+					
+					
+
+						
+					
+
+					
+
+						
+						<div id="contentdiv" class="text" itemprop="articleBody">
+						
+
+
+
+<div id="AdnTop">
+<div class="AdnTopLeft" style="float:left">&nbsp;</div>
+
+<div class="AdnTopRight" style="float:right">&nbsp;</div>
+
+<div style="clear:both">&nbsp;</div>
+</div>
+
+<p><a href="http://typecastexception.com/image.axd?picture=3835365695_5e515a3492_m.jpg"><img align="left" alt="3835365695_5e515a3492_m" border="0" height="216" src="./Installing and Using SQLite on Windows - CodeProject_files/image.axd" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; float: left; padding-removed 0px; padding-removed 0px; margin: 0px 10px 0px 0px; display: inline; padding-removed 0px; border-top-width: 0px" title="3835365695_5e515a3492_m" width="261"></a>When one is developing in .NET with Visual Studio and other Microsoft tools, it is easy to lose sight of alternative solutions to common problems. MS does a competent job of creating a tightly integrated development tool chain, where available MS products (both free and paid) offer reasonable default choices which generally get the job done.</p>
+
+<p>Given this, .NET devs often fail to explore outside this arena, or try on alternate solutions which might acquit themselves equally as well, or better, to the problem at hand. Also, of course, there is always a learning curve to new choices, and we often choose the familiar out of simple expediency.</p>
+
+<p><font size="1">Image by </font><a href="https://www.flickr.com/photos/shindotv/" target="_blank"><font size="1">shinichi</font></a><font size="1">&nbsp; |&nbsp; </font><a href="https://creativecommons.org/licenses/by-nc-sa/2.0/" target="_blank"><font size="1">Some Rights Reserved</font></a></p>
+
+<ul>
+	<li><a class="wlwStaticLink" href="http://feedproxy.google.com/~r/TypeCastException/~3/4SvHO-aCNg4/#Getting-Started---Using-SQLite-on-Windows" id="Getting-Started---Using-SQLite-on-Windows:wlwStaticLink">Getting Started - Using SQLite on Windows</a></li>
+	<li><a class="wlwStaticLink" href="http://feedproxy.google.com/~r/TypeCastException/~3/4SvHO-aCNg4/#Open-a-New-Database-and-Create-Some-Tables-from-the-SQLite3-Console" id="Open-a-New-Database-and-Create-Some-Tables-from-the-SQLite3-Console:wlwStaticLink">Open a New Database and Create Some Tables from the SQLite3 Console</a></li>
+	<li><a class="wlwStaticLink" href="http://feedproxy.google.com/~r/TypeCastException/~3/4SvHO-aCNg4/#Entering-SQL-in-the-SQLite-Console" id="Entering-SQL-in-the-SQLite-Console:wlwStaticLink">Entering SQL in the SQLite Console</a></li>
+	<li><a class="wlwStaticLink" href="http://feedproxy.google.com/~r/TypeCastException/~3/4SvHO-aCNg4/#Formatting-the-Console-Output" id="Formatting-the-Console-Output:wlwStaticLink">Formatting the Console Output</a></li>
+	<li><a class="wlwStaticLink" href="http://feedproxy.google.com/~r/TypeCastException/~3/4SvHO-aCNg4/#Change-the-Display-Mode-for-the-SQLite-Console" id="Change-the-Display-Mode-for-the-SQLite-Console:wlwStaticLink">Change the Display Mode for the SQLite Console</a></li>
+	<li><a class="wlwStaticLink" href="http://feedproxy.google.com/~r/TypeCastException/~3/4SvHO-aCNg4/#Executing-Script-Files-from-the-SQLite-Console-Using-the--Read-Command" id="Executing-Script-Files-from-the-SQLite-Console-Using-the--Read-Command:wlwStaticLink">Executing Script Files from the SQLite Console Using the .Read Command</a></li>
+	<li><a class="wlwStaticLink" href="http://feedproxy.google.com/~r/TypeCastException/~3/4SvHO-aCNg4/#Wrap-Multiple-Actions-in-Transactions-for-Instant-Performance-Boost" id="Wrap-Multiple-Actions-in-Transactions-for-Instant-Performance-Boost:wlwStaticLink">Wrap Multiple Actions in Transactions for Instant Performance Boost</a></li>
+	<li><a class="wlwStaticLink" href="http://feedproxy.google.com/~r/TypeCastException/~3/4SvHO-aCNg4/#GUI-Based-Tools" id="GUI-Based-Tools:wlwStaticLink">GUI-Based Tools</a></li>
+	<li><a class="wlwStaticLink" href="http://feedproxy.google.com/~r/TypeCastException/~3/4SvHO-aCNg4/#Additional-Resources-and-Items-of-Interest" id="Additional-Resources-and-Items-of-Interest:wlwStaticLink">Additional Resources and Items of Interest</a></li>
+</ul>
+
+<h3><a class="wlwStaticAnchor" id="Some-Background">Some Background</a></h3>
+
+<p><a href="http://www.sqlite.org/index.html" target="_blank">SQLite</a> is an awesome, open source, cross-platform, freely available file-based relational database. Database files created on Windows will move seamlessly to OSX or Linux OSes. The tools (in particular the SQLite3 Command Line CLI we examine here) work the same from one environment to the next.</p>
+
+<p>It is also not new. If you have been around for a while, you doubtless know SQLite has been in active and open development for well over a decade, and is widely used in many different scenarios and operating environments. In fact, SQLite.org estimates that SQLite is in fact the <a href="http://www.sqlite.org/mostdeployed.html" target="_blank">most widely deployed SQL database solution in the world</a>. Their most recent figures (albeit from 2006) would indicate that there are over 500 million deployments of SQLite (this number is no doubt higher by now).&nbsp;</p>
+
+<p><a href="http://www.sqlite.org/docs.html" target="_blank">SQLite documentation</a> is also widely regarded as above average in completeness and usability, providing both new and experienced users a well-developed canonical resource for learning and troubleshooting.</p>
+
+<p>SQLite was originally designed by D. Richard Hipp in 2000 for the U.S. Navy, with the goal of allowing SQLite-based programs to function without installing a database management system, and without requiring a system administrator (from <a href="http://en.wikipedia.org/wiki/SQLite#History" target="_blank">Wikipedia</a>). These design requirements result in, as the SQLite site describes it, "a software library that implements a <a href="http://www.sqlite.org/selfcontained.html" target="_blank">self-contained</a>, <a href="http://www.sqlite.org/serverless.html" target="_blank">serverless</a>, <a href="http://www.sqlite.org/zeroconf.html" target="_blank">zero-configuration</a>, <a href="http://www.sqlite.org/transactional.html" target="_blank">transactional</a> SQL database engine."</p>
+
+<p>Until recently, I had not spent much time with SQLite. However, in developing the <a href="https://github.com/xivSolutions/biggy" target="_blank">Biggy project</a>, we decided that the core supported database systems would be cross-platform and open source. We wanted both a full-on client/server option, as well as a file-based relational database option. For our file-based relational database we chose SQLite, after exploring other alternatives.</p>
+
+<p>In fitting SQLite into the Biggy workflow, I got to the chance to familiarize myself with SQLite, it strengths, some weaknesses, some peculiarities to watch for, and some tips and tricks for getting the most out of the product.</p>
+
+<p>In this post, we will get familiar with the basics of using the database in a Windows environment. Next post, we will explore integration with .NET development, and Visual Studio. But, learn the hard way first always say, so… let''s get our command line on.</p>
+
+<h3><a class="wlwStaticAnchor" id="Getting-Started---Using-SQLite-on-Windows">Getting Started - Using SQLite on Windows</a></h3>
+
+<p>Before we look at using SQLite in Visual Studio, let's walk through the basics of using SQLite in a Windows environment outside the IDE.</p>
+
+<p>First, download the pre-compiled binaries from the <a href="http://www.sqlite.org/download.html" target="_blank">SQLite Downloads page</a>. At a minimum you will want the binaries for the Win32 x86 SQLite dll, and for the SQLite x86 Command Shell. Unzip the contents of the files in a folder named <em>C:\SQLite3</em> (or whatever other location suits your needs). Then<strong> <a href="http://typecastexception.com/post/2014/12/07/Adding-and-Editing-PATH-Environment-Variables-in-Windows.aspx">add C:\SQLite3 to your PATH variable</a></strong> so that you can invoke the SQLite Command Shell right from the Windows console.</p>
+
+<p>In your new directory <em>C:\SQLite3</em> you should now have the following items:</p>
+
+<ul>
+	<li>sqlite3.def</li>
+	<li>sqlite3.dll</li>
+	<li>sqlite3.exe</li>
+</ul>
+
+<p>If we run the sqlite3.exe, we are greeted with a Console Application designed to allow us to work with SQLite databases:</p>
+
+<h5>The SQLite Console:</h5>
+
+<p><a href="http://typecastexception.com/image.axd?picture=Command%20Prompt%20-%20open%20-%20sqlite3.png"><img alt="Command Prompt - open - sqlite3" border="0" height="346" src="./Installing and Using SQLite on Windows - CodeProject_files/image(1).axd" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; float: none; padding-removed 0px; padding-removed 0px; margin: 0px auto; display: block; padding-removed 0px; border-top-width: 0px" title="Command Prompt - open - sqlite3" width="674"></a></p>
+
+<p>The command prompt is easy to use. Text entered without the "." qualifier will be treated as SQL (and succeed or fail accordingly). There are a set of commands preceded with the "." qualified which are application commands. An example is shown in the console window above, where we are instructed to use the .open command to open a database file.</p>
+
+<p>The complete list of SQLite console commands is beyond the scope of this article, but we will walk through a list of the most useful here.</p>
+
+<h3><a class="wlwStaticAnchor" id="Open-a-New-Database-and-Create-Some-Tables-from-the-SQLite3-Console">Open a New Database and Create Some Tables from the SQLite3 Console</a></h3>
+
+<p>The SQLite3 Console will open in the current directory (or in the directory in which the .exe is found, if you double-click in the GUI). Let's start by opening a new Windows terminal (which should generally open in our home directory), create a new sub-directory named <em>sqlite_data</em>, and navigating into that folder:</p>
+
+<h5>Create a new Directory and Navigate Into the New Directory:</h5>
+
+<div class="pre-action-link" id="premain478123" style="width:100%;display:block;"><span id="prehide478123" onclick="processCodeBlocks.togglePre(478123);">Hide</span>  &nbsp; <span onclick="return processCodeBlocks.copyCode(478123);">Copy Code</span></div><pre id="pre478123" style="margin-top: 0px;">C:\Users\John&gt; mkdir sqlite_databases
+C:\Users\John&gt; cd sqlite_databases
+</pre>
+
+<p>&nbsp;</p>
+
+<p>Next, let's try on that <code>.open</code> command. Open sqlite3 and open a new database in the directory we just created:</p>
+
+<h5>Open SQlite3.exe and Open a New Database File:</h5>
+
+<div class="pre-action-link" id="premain449686" style="width:100%;display:block;"><span id="prehide449686" onclick="processCodeBlocks.togglePre(449686);">Hide</span>  &nbsp; <span onclick="return processCodeBlocks.copyCode(449686);">Copy Code</span></div><pre id="pre449686" style="margin-top: 0px;">C:\Users\John\sqlite_databases&gt;sqlite3
+sqlite&gt; .open test.sqlite
+</pre>
+
+<p>&nbsp;</p>
+
+<p>Your console output should now look like this:</p>
+
+<h5>Console Output after Opening SQLite3 and Creating a New Database File:</h5>
+
+<p><a href="http://typecastexception.com/image.axd?picture=open-new-database.png"><img alt="open-new-database" border="0" height="344" src="./Installing and Using SQLite on Windows - CodeProject_files/image(2).axd" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; float: none; padding-removed 0px; padding-removed 0px; margin: 0px auto; display: block; padding-removed 0px; border-top-width: 0px" title="open-new-database" width="671"></a></p>
+
+<p>Next, let's create a few tables to play with.</p>
+
+<h3><a class="wlwStaticAnchor" id="Entering-SQL-in-the-SQLite-Console">Entering SQL in the SQLite Console</a></h3>
+
+<p>Recall that plain text entered without the "." qualifier will be interpreted by the SQLite console as SQL. There are a few additional things to bear in mind:</p>
+
+<ul>
+	<li>SQL text may span multiple lines - <strong>the enter key will not cause the text following the prompt to execute</strong> until it is ended with a semi-colon.</li>
+	<li>You can create multi-line SQL statements simply by hitting the Enter key without ending the statement with a semi-colon.</li>
+	<li>SQLite uses either square brackets or double-quotes as delimiters for object names, in cases where the literal column name would not be allowed. For example, <code><strong>Last Name</strong></code> would NOT be a valid column name, but will work as <code><strong>[Last Name]</strong></code> . Likewise, the keyword <code><strong>Group</strong></code> is not allowed as a column name, but <code><strong>"Group"</strong></code> will work.</li>
+	<li>SQLite is not case-sensitive. Unlike some other databases (most notably Postgresql), casing in both the SQL syntax, and in object names, is ignored.</li>
+</ul>
+
+<p>So, with that said, let's create a table or two.We will keep this really basic, since we are interested in how the console works, more so that a SQLite SQL syntax tutorial.</p>
+
+<h5>Create a Table in a Single-Line Statement:</h5>
+
+<p><a href="http://typecastexception.com/image.axd?picture=create-table-users-single-line.png"><img alt="create-table-users-single-line" border="0" height="343" src="./Installing and Using SQLite on Windows - CodeProject_files/image(3).axd" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; float: none; padding-removed 0px; padding-removed 0px; margin: 0px auto; display: block; padding-removed 0px; border-top-width: 0px" title="create-table-users-single-line" width="669"></a></p>
+
+<p>Above, we just kept typing our whole SQL statement, and allowed the console to wrap the text when it needed to (that lovely Windows console, with its under-developed display characteristics…). Kinda ugly and hard to read. Let's try a multi-line statement.</p>
+
+<h5>Create a Table Using a Multi-Line Statement:</h5>
+
+<p><a href="http://typecastexception.com/image.axd?picture=create-table-groups-multi-line.png"><img alt="create-table-groups-multi-line" border="0" height="342" src="./Installing and Using SQLite on Windows - CodeProject_files/image(4).axd" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; float: none; padding-removed 0px; padding-removed 0px; margin: 0px auto; display: block; padding-removed 0px; border-top-width: 0px" title="create-table-groups-multi-line" width="667"></a></p>
+
+<p>Aside from the ugliness that is the Windows Console, that's a little more readable.</p>
+
+<p>Now let's add a few records.</p>
+
+<h5>Insert Records into Test Database:</h5>
+
+<p><a href="http://typecastexception.com/image.axd?picture=insert-beatles.png"><img alt="insert-beatles" border="0" height="343" src="./Installing and Using SQLite on Windows - CodeProject_files/image(5).axd" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; float: none; padding-removed 0px; padding-removed 0px; margin: 0px auto; display: block; padding-removed 0px; border-top-width: 0px" title="insert-beatles" width="669"></a></p>
+
+<p>Notice how the case of my SQL doesn't matter in the above? And, yes, as a matter of fact, that IS a syntax error in the midst of things there. I accidentally used an angle bracket instead of a paren…</p>
+
+<p>So now, we have added a little data. Let's read it back:</p>
+
+<h5>Select Data from Users Table:</h5>
+
+<p><a href="http://typecastexception.com/image.axd?picture=select-beatles.png"><img alt="select-beatles" border="0" height="342" src="./Installing and Using SQLite on Windows - CodeProject_files/image(6).axd" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; float: none; padding-removed 0px; padding-removed 0px; margin: 0px auto; display: block; padding-removed 0px; border-top-width: 0px" title="select-beatles" width="667"></a></p>
+
+<p>Here we see that for unrelated reasons (ahem… I closed the wrong window…), I had to exit the application, and then go back in. However, once I opened our <strong>test.sqlite</strong> database, I was able to enter a standard SELECT statement, and return the data.</p>
+
+<p>See that <code><font face="Courier New"><font color="#333333">...&gt;</font></font></code>? That was the result of me forgetting to add the semi-colon at the end of my SELECT statement. If you do that (and you WILL…), simply add a semi-colon on the continued line, and the statement will execute (remember, until SQLite3 sees a semi-colon, it will continue to interpret text input as more SQL).</p>
+
+<h3><a class="wlwStaticAnchor" id="Formatting-the-Console-Output">Formatting the Console Output</a></h3>
+
+<p>We can tell SQLite3 how we would like our data displayed. For example, we may prefer to see a more tabular display, with columns and headers. To accomplish this, we use a few of those application commands, prefixed with a period:</p>
+
+<h3><a class="wlwStaticAnchor" id="Change-the-Display-Mode-for-the-SQLite-Console">Change the Display Mode for the SQLite Console</a></h3>
+
+<p>We can use the following two commands to change the display mode and use columns and headers in our console output:</p>
+
+<h5>Use Column Display Mode with Headers in SQLite3</h5>
+
+<div class="pre-action-link" id="premain795282" style="width:100%;display:block;"><span id="prehide795282" onclick="processCodeBlocks.togglePre(795282);">Hide</span>  &nbsp; <span onclick="return processCodeBlocks.copyCode(795282);">Copy Code</span></div><pre id="pre795282" style="margin-top: 0px;">sqlite&gt; .mode column
+sqlite&gt; .headers on
+</pre>
+
+<p>&nbsp;</p>
+
+<p>If we run our SELECT statement again, the output looks like this:</p>
+
+<h5>Console Output Using Columns and Headers:</h5>
+
+<p><a href="http://typecastexception.com/image.axd?picture=display-with-columns.png"><img alt="display-with-columns" border="0" height="344" src="./Installing and Using SQLite on Windows - CodeProject_files/image(7).axd" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; float: none; padding-removed 0px; padding-removed 0px; margin: 0px auto; display: block; padding-removed 0px; border-top-width: 0px" title="display-with-columns" width="670"></a></p>
+
+<h3><a class="wlwStaticAnchor" id="Executing-Script-Files-from-the-SQLite-Console-Using-the--Read-Command">Executing Script Files from the SQLite Console Using the .Read Command</a></h3>
+
+<p>Of course, typing in SQL in the console can become painful. While it is fine for quick-and-diry queries and maintenance tasks, doing a lot of work is better accomplished by scripting out what you need in a text file, and then executing that from the Console.</p>
+
+<p>To see this in action, we will download my personal favorite test database, the Chinook database. Chinook has a database script for most of the popular database platforms, providing a handy way to use the same data set for evaluating multiple platforms (among other things). <a href="http://chinookdatabase.codeplex.com/" target="_blank">Download the Chinook Database</a>, extract the .zip file, and locate the <em>Chinook_Sqlite_AutoIncrementPKs.sql</em> file. To keep things simple, drop a copy of it into your <em>sqlite_databases</em> folder, so it is in the current directory. Then, also to keep out typing down, rename the file you just moved to simply "Chinook.sql".</p>
+
+<p>We can execute SQL scripts using the SQLite .read command. To illustrate, we will read in the Chinook database.</p>
+
+<p>You will notice a couple things when we do this. First,&nbsp; the console may show an error (which you can see in the image below), but the script is still running - errors are logged out to the console.</p>
+
+<p>Second, executing this script in its current form is SLOOOOWWWW. <strong>This is due to a peculiarity with SQLite we will address momentarily,</strong> but was not addressed by the creators of the Chinook Database script.</p>
+
+<h5>Execute SQL Script from the SQLite Console Using the .Read Command</h5>
+
+<div class="pre-action-link" id="premain929179" style="width:100%;display:block;"><span id="prehide929179" onclick="processCodeBlocks.togglePre(929179);">Hide</span>  &nbsp; <span onclick="return processCodeBlocks.copyCode(929179);">Copy Code</span></div><pre id="pre929179" style="margin-top: 0px;">sqlite&gt; .read Chinook.sql
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>The script may run for a good number of minutes</strong>, so go grab a cup of coffee or something. your computer has not seized up. The Console will return when the script is finished (really, this took about 10 minutes on my machine, but we're going to fix that...</p>
+
+<p>&lt;Coffeee Brake . . .&gt;</p>
+
+<p>Ok. Now that the script has finished running, let's use the .tables command to see a list of the tables in our database. If everything worked as we expect, we should see our own users and groups tables, as well as a bunch of new ones populated with Chinook data:</p>
+
+<h5>List Tables Using the .Tables Command:</h5>
+
+<div class="pre-action-link" id="premain617741" style="width:100%;display:block;"><span id="prehide617741" onclick="processCodeBlocks.togglePre(617741);">Hide</span>  &nbsp; <span onclick="return processCodeBlocks.copyCode(617741);">Copy Code</span></div><pre id="pre617741" style="margin-top: 0px;">sqlite&gt; .tables
+</pre>
+
+<p>&nbsp;</p>
+
+<p>We should see something like this:</p>
+
+<h5>Console Output from .Tables Command:</h5>
+
+<p><a href="http://typecastexception.com/image.axd?picture=list-tables-after-chinook-import.png"><img alt="list-tables-after-chinook-import" border="0" height="342" src="./Installing and Using SQLite on Windows - CodeProject_files/image(8).axd" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; float: none; padding-removed 0px; padding-removed 0px; margin: 0px auto; display: block; padding-removed 0px; border-top-width: 0px" title="list-tables-after-chinook-import" width="667"></a></p>
+
+<p>Now, why the hell did it take so long to run that script??!!</p>
+
+<h3><a class="wlwStaticAnchor" id="Wrap-Multiple-Actions-in-Transactions-for-Instant-Performance-Boost">Wrap Multiple Actions in Transactions for Instant Performance Boost</a></h3>
+
+<p>SQLite is inherently transaction-based. Meaning, unless you specify otherwise, each statement will be treated as an individual transaction, which must succeed, or be rolled back.</p>
+
+<p>Transactions are a key feature of relational databases, and critical in the big scheme of things. However, individually, transactions add significant performance overhead, and when we are inserting (or updating, or otherwise modifying) thousands of records in multiple tables, treating each insert as an individual transaction slows things WAAAAYYYY DOWWN.</p>
+
+<p>This is a known issue with SQLite. I say "issue" because, despite the fact that the implementation is intentional, the solution to "why are inserts on SQLite so slow" in not immediatly obvious, and the internet is stuffed with variations on this question.&nbsp;</p>
+
+<p>Similarly, the Chinook Database implementation neglects this important detail, and the many inserts used to populate Chinook data are treated as individual transactions, and thus run really slow.&nbsp;</p>
+
+<p>Here is the fix:</p>
+
+<p>If we go through the <em>Chinook.sql</em> script and place a <code>BEGIN;</code> statement before the inserts for each table, and a <code>COMMIT; </code>statement at the end of the INSERTs for each table, we will see several orders magnitude better performance from this script.</p>
+
+<p>We can skip wrapping the <code>DROP</code> and <code>CREATE</code> table statements in transactions for our purposes here. As an example, open the file in your favorite text editor, go through and find the beginning of the INSERTs for the Genre table. Add a <code>BEGIN;</code> and <code>COMMIT;</code> clause like so:</p>
+
+<h5>Wrap Table Inserts in Transactions:</h5>
+
+<div class="pre-action-link" id="premain968607" style="width:100%;display:block;"><span id="prehide968607" onclick="processCodeBlocks.togglePre(968607);">Hide</span>  &nbsp; <span onclick="return processCodeBlocks.copyCode(968607);">Copy Code</span></div><pre lang="sql" id="pre968607" style="margin-top: 0px;">BEGIN;
+<span class="code-keyword">INSERT</span> <span class="code-keyword">INTO</span> [Genre] ([Name]) <span class="code-keyword">VALUES</span> (<span class="code-string">'</span><span class="code-string">Rock'</span>);
+<span class="code-keyword">INSERT</span> <span class="code-keyword">INTO</span> [Genre] ([Name]) <span class="code-keyword">VALUES</span> (<span class="code-string">'</span><span class="code-string">Jazz'</span>);
+... Etc ...
+<span class="code-keyword">INSERT</span> <span class="code-keyword">INTO</span> [Genre] ([Name]) <span class="code-keyword">VALUES</span> (<span class="code-string">'</span><span class="code-string">Alternative'</span>);
+<span class="code-keyword">INSERT</span> <span class="code-keyword">INTO</span> [Genre] ([Name]) <span class="code-keyword">VALUES</span> (<span class="code-string">'</span><span class="code-string">Classical'</span>);
+<span class="code-keyword">INSERT</span> <span class="code-keyword">INTO</span> [Genre] ([Name]) <span class="code-keyword">VALUES</span> (<span class="code-string">'</span><span class="code-string">Opera'</span>);
+COMMIT;
+</pre>
+
+<p>&nbsp;</p>
+
+<p>Now scroll on down, and do the same for each table. When you are done, let's create a dedicated Chinook database to try it out.</p>
+
+<p>Open the Windows Console, navigate back to <em>sqlite_databases</em> directory, run sqlite3, and open a new database named <strong>chinook.db</strong>. Then use<code>.read
+</code> to execute the <em>chinook.sql</em> script again:</p>
+
+<h5>Read Chinook Script into Chinook.db:</h5>
+
+<div class="pre-action-link" id="premain720997" style="width:100%;display:block;"><span id="prehide720997" onclick="processCodeBlocks.togglePre(720997);">Hide</span>  &nbsp; <span onclick="return processCodeBlocks.copyCode(720997);">Copy Code</span></div><pre id="pre720997" style="margin-top: 0px;">C:\Users\John&gt;cd sqlite_databases
+C:\Users\John\sqlite_databases&gt;sqlite3
+sqlite&gt; .open chinook.db
+sqlite&gt; .read chinook.sql
+</pre>
+
+<p>Next, use the <code>.tables</code> command again to see that all the tables were created. The console output should look like this:</p>
+
+<h5>Console Output from Execution after Wrapping Table Inserts in Transactions:</h5>
+
+<p><a href="http://typecastexception.com/image.axd?picture=fast-script-execution-with-transactions.png"><img alt="fast-script-execution-with-transactions" border="0" height="341" src="./Installing and Using SQLite on Windows - CodeProject_files/image(9).axd" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; float: none; padding-removed 0px; padding-removed 0px; margin: 0px auto; display: block; padding-removed 0px; border-top-width: 0px" title="fast-script-execution-with-transactions" width="665"></a></p>
+
+<p>We see there is still a little error bugaboo at Line 1 (most likely due to some unicode issue at the beginning of the file - welcome to the world of scripts). However, we can see if our data imported fairly easily:</p>
+
+<h5>Select Artists from the Chinook Artists Table:<a href="http://typecastexception.com/image.axd?picture=select-from-artist-table.png"><img alt="select-from-artist-table" border="0" height="343" src="./Installing and Using SQLite on Windows - CodeProject_files/image(10).axd" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; float: none; padding-removed 0px; padding-removed 0px; margin: 0px auto; display: block; padding-removed 0px; border-top-width: 0px" title="select-from-artist-table" width="669"></a></h5>
+
+<p>&nbsp;</p>
+
+<h3><a class="wlwStaticAnchor" id="GUI-Based-Tools">GUI-Based Tools</a></h3>
+
+<p>We've covered enough here that we can explore what SQLite has to offer from the Windows console, and become familiar with this fantastic little database. Of course, there are other tools available to work with SQLite databases, including a terrific multi-platform GUI-based interface, <a href="http://sqlitebrowser.org/" target="_blank">SQLiteBrowser</a>, which is a very competent management interface for SQLite databases.</p>
+
+<p>As mentioned previously, the documentation available at SQL.org is first-rate, and there are a host of other resources out there as well.</p>
+
+<p>SQLite is a handy, mature, highly performant database which is easy to use, and works on all the major OS platforms. Database files created on a Windows machine can move seamlessly between OSX and *Nix OSes, as can most of the tools designed to work with them.</p>
+
+<p>I like to start everything with the most fundamental tools available, and then once I have developed a solid understanding of the system, move on up to more advanced tools. Take some time and get to know SQLite from the basic CLI interface. You won't regret it.</p>
+
+<h3><a class="wlwStaticAnchor" id="Additional-Resources-and-Items-of-Interest">Additional Resources and Items of Interest</a></h3>
+
+<ul>
+	<li><a href="http://www.sqlite.org/cli.html">Command Line Shell for SQLite - Reference at SQLite.org</a></li>
+	<li><a href="http://www.sqlite.org/lang.html">SQLite Syntax - Reference at SQLite.org</a></li>
+	<li><a href="http://sqlitebrowser.org/">Database Browser for SQLite</a></li>
+	<li><a href="http://typecastexception.com/post/2014/12/07/Adding-and-Editing-PATH-Environment-Variables-in-Windows.aspx">Adding and Editing PATH Environment Variables in Windows</a></li>
+	<li><a href="http://typecastexception.com/post/2014/03/10/C-Using-Reflection-and-Custom-Attributes-to-Map-Object-Properties.aspx">C#: Using Reflection and Custom Attributes to Map Object Properties</a></li>
+</ul>
+
+<p><a href="https://plus.google.com/115011708567871897637" rel="author" style="display: none">John on Google</a> <a href="http://www.codeproject.com/" rel="tag" style="display: none">CodeProject</a></p>
+
+<div id="AdnBottom">
+<div class="AdnBottomLeft" style="float:left">&nbsp;</div>
+
+<div class="AdnBottomRight" style="float:right">&nbsp;</div>
+
+<div style="clear:both">&nbsp;</div>
+</div>
+
+<p><img alt="" height="1" src="./Installing and Using SQLite on Windows - CodeProject_files/4SvHO-aCNg4" width="1"></p>
+
+
+						</div>
+						
+
+						<div class="float-right" style="margin:20px 0 0 10px;border:1px solid #ccc">
+						<div class="msg-300x250" data-format="300x250" data-type="ad" data-publisher="lqm.codeproject.site" data-zone="Database/Database/General" data-loadonview="true" data-tags="SQL, Windows, Beginner, Intermediate, All-Topics, SQLite,rating4.5"></div>
+						</div>
+                        
+                        
+						
+						<h2>License</h2>
+						<div id="LicenseTerms"><p>This article, along with any associated source code and files, is licensed under <a href="http://www.codeproject.com/info/cpol10.aspx" rel="license">The Code Project Open License (CPOL)</a></p></div>
+						
+
+                        
+						<h2>Share</h2>
+				        <div class="share-list">
+					        
+
+
+
+<!-- Buttons start here. Copy this ul to your document. -->
+<ul class="rrssb-buttons clearfix rrssb-1">
+    <li class="email" data-initwidth="16.666666666666668" data-size="34" style="width: calc(50% - 84px);">
+
+        <a href="mailto:?subject=Installing%20and%20Using%20SQLite%20on%20Windows%20-%20CodeProject&amp;body=Here%27s%20an%20interesting%20article%20on%20for%20you%20on%20codeproject.com%0a%0ahttp%3a%2f%2fwww.codeproject.com%2fArticles%2f850834%2fInstalling-and-Using-SQLite-on-Windows%0a">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve"><g>
+                        <path d="M20.111 26.147c-2.336 1.051-4.361 1.401-7.125 1.401c-6.462 0-12.146-4.633-12.146-12.265 
+                            c0-7.94 5.762-14.833 14.561-14.833c6.853 0 11.8 4.7 11.8 11.252c0 5.684-3.194 9.265-7.399 
+                            9.3 c-1.829 0-3.153-0.934-3.347-2.997h-0.077c-1.208 1.986-2.96 2.997-5.023 2.997c-2.532 
+                            0-4.361-1.868-4.361-5.062 c0-4.749 3.504-9.071 9.111-9.071c1.713 0 3.7 0.4 4.6 0.973l-1.169 
+                            7.203c-0.388 2.298-0.116 3.3 1 3.4 c1.673 0 3.773-2.102 3.773-6.58c0-5.061-3.27-8.994-9.303-8.994c-5.957 
+                            0-11.175 4.673-11.175 12.1 c0 6.5 4.2 10.2 10 10.201c1.986 0 4.089-0.43 5.646-1.245L20.111 
+                            26.147z M16.646 10.1 c-0.311-0.078-0.701-0.155-1.207-0.155c-2.571 0-4.595 2.53-4.595 5.529c0 
+                            1.5 0.7 2.4 1.9 2.4 c1.441 0 2.959-1.828 3.311-4.087L16.646 10.068z"></path></g>
+                </svg>
+            </span>
+            <span class="text">email</span>
+        </a>
+    </li>
+    <li class="twitter" data-initwidth="16.666666666666668" data-size="48" style="width: calc(50% - 84px);">
+        <!-- Replace href with your Meta and URL information  -->
+        <a href="http://twitter.com/home?status=Installing+and+Using+SQLite+on+Windows+-+CodeProject+-+http%3a%2f%2fwww.codeproject.com%2fArticles%2f850834%2fInstalling-and-Using-SQLite-on-Windows" class="popup">
+            <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
+                <path d="M24.253,8.756C24.689,17.08,18.297,24.182,9.97,24.62c-3.122,0.162-6.219-0.646-8.861-2.32
+                    c2.703,0.179,5.376-0.648,7.508-2.321c-2.072-0.247-3.818-1.661-4.489-3.638c0.801,0.128,1.62,0.076,2.399-0.155
+                    C4.045,15.72,2.215,13.6,2.115,11.077c0.688,0.275,1.426,0.407,2.168,0.386c-2.135-1.65-2.729-4.621-1.394-6.965
+                    C5.575,7.816,9.54,9.84,13.803,10.071c-0.842-2.739,0.694-5.64,3.434-6.482c2.018-0.623,4.212,0.044,5.546,1.683
+                    c1.186-0.213,2.318-0.662,3.329-1.317c-0.385,1.256-1.247,2.312-2.399,2.942c1.048-0.106,2.069-0.394,3.019-0.851
+                    C26.275,7.229,25.39,8.196,24.253,8.756z"></path>
+                </svg>
+            </span>
+            <span class="text">twitter</span>
+        </a>
+    </li>
+
+    <li class="facebook small" data-initwidth="16.666666666666668" data-size="57" style="width: 42px;">
+        <!-- Replace with your URL. For best results, make sure you page has the proper FB Open Graph tags in header: 
+        https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content/ -->
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fwww.codeproject.com%2fArticles%2f850834%2fInstalling-and-Using-SQLite-on-Windows" class="popup">
+            <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
+                    <path d="M27.825,4.783c0-2.427-2.182-4.608-4.608-4.608H4.783c-2.422,0-4.608,2.182-4.608,4.608v18.434
+                        c0,2.427,2.181,4.608,4.608,4.608H14V17.379h-3.379v-4.608H14v-1.795c0-3.089,2.335-5.885,5.192-5.885h3.718v4.608h-3.726
+                        c-0.408,0-0.884,0.492-0.884,1.236v1.836h4.609v4.608h-4.609v10.446h4.916c2.422,0,4.608-2.188,4.608-4.608V4.783z"></path>
+                </svg>
+            </span>
+            <span class="text">facebook</span>
+        </a>
+    </li>
+    
+    <li class="linkedin small" data-initwidth="16.666666666666668" data-size="52" style="width: 42px;">
+        <!-- Replace href with your meta and URL information -->
+        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fwww.codeproject.com%2fArticles%2f850834%2fInstalling-and-Using-SQLite-on-Windows&amp;title=Installing+and+Using+SQLite+on+Windows+-+CodeProject&amp;summary=&amp;source=codeproject.com" class="popup">
+            <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
+                    <path d="M25.424,15.887v8.447h-4.896v-7.882c0-1.979-0.709-3.331-2.48-3.331c-1.354,0-2.158,0.911-2.514,1.803
+                        c-0.129,0.315-0.162,0.753-0.162,1.194v8.216h-4.899c0,0,0.066-13.349,0-14.731h4.899v2.088c-0.01,0.016-0.023,0.032-0.033,0.048
+                        h0.033V11.69c0.65-1.002,1.812-2.435,4.414-2.435C23.008,9.254,25.424,11.361,25.424,15.887z M5.348,2.501
+                        c-1.676,0-2.772,1.092-2.772,2.539c0,1.421,1.066,2.538,2.717,2.546h0.032c1.709,0,2.771-1.132,2.771-2.546
+                        C8.054,3.593,7.019,2.501,5.343,2.501H5.348z M2.867,24.334h4.897V9.603H2.867V24.334z"></path>
+                </svg>
+            </span>
+            <span class="text">linkedin</span>
+        </a>
+    </li>
+    <li class="reddit small" data-initwidth="16.666666666666668" data-size="40" style="width: 42px;">
+        <a href="http://www.reddit.com/submit?url=http%3a%2f%2fwww.codeproject.com%2fArticles%2f850834%2fInstalling-and-Using-SQLite-on-Windows&amp;title=Installing+and+Using+SQLite+on+Windows+-+CodeProject">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve"><g>
+                <path d="M11.794 15.316c0-1.029-0.835-1.895-1.866-1.895c-1.03 0-1.893 0.865-1.893 1.895s0.863 1.9 1.9 1.9 C10.958 17.2 11.8 16.3 11.8 15.316z"></path>
+                <path d="M18.1 13.422c-1.029 0-1.895 0.864-1.895 1.895c0 1 0.9 1.9 1.9 1.865c1.031 0 1.869-0.836 1.869-1.865 C19.969 14.3 19.1 13.4 18.1 13.422z"></path>
+                <path d="M17.527 19.791c-0.678 0.678-1.826 1.006-3.514 1.006c-0.004 0-0.009 0-0.014 0c-0.004 0-0.01 0-0.015 0 
+                c-1.686 0-2.834-0.328-3.51-1.005c-0.264-0.265-0.693-0.265-0.958 0c-0.264 0.265-0.264 0.7 0 1 c0.943 0.9 2.4 1.4 
+                4.5 1.402c0.005 0 0 0 0 0c0.005 0 0 0 0 0c2.066 0 3.527-0.459 4.47-1.402 c0.265-0.264 0.265-0.693 0.002-0.958C18.221 
+                19.5 17.8 19.5 17.5 19.791z"></path><path d="M27.707 13.267c0-1.785-1.453-3.237-3.236-3.237c-0.793 0-1.518 0.287-2.082 
+                0.761c-2.039-1.295-4.646-2.069-7.438-2.219 l1.483-4.691l4.062 0.956c0.071 1.4 1.3 2.6 2.7 2.555c1.488 0 2.695-1.208 
+                2.695-2.695C25.881 3.2 24.7 2 23.2 2 c-1.059 0-1.979 0.616-2.42 1.508l-4.633-1.091c-0.344-0.081-0.693 0.118-0.803 
+                0.455l-1.793 5.7 C10.548 8.6 7.7 9.4 5.6 10.75C5.006 10.3 4.3 10 3.5 10.029c-1.785 0-3.237 1.452-3.237 3.2 c0 1.1 0.6 
+                2.1 1.4 2.69c-0.04 0.272-0.061 0.551-0.061 0.831c0 2.3 1.3 4.4 3.7 5.9 c2.299 1.5 5.3 2.3 8.6 2.325c3.228 0 6.271-0.825 
+                8.571-2.325c2.387-1.56 3.7-3.66 3.7-5.917 c0-0.26-0.016-0.514-0.051-0.768C27.088 15.5 27.7 14.4 27.7 13.267z M23.186 
+                3.355c0.74 0 1.3 0.6 1.3 1.3 c0 0.738-0.6 1.34-1.34 1.34s-1.342-0.602-1.342-1.34C21.844 4 22.4 3.4 23.2 3.355z M1.648 
+                13.3 c0-1.038 0.844-1.882 1.882-1.882c0.31 0 0.6 0.1 0.9 0.209c-1.049 0.868-1.813 1.861-2.26 2.9 C1.832 14.2 1.6 13.8 1.6 
+                13.267z M21.773 21.57c-2.082 1.357-4.863 2.105-7.831 2.105c-2.967 0-5.747-0.748-7.828-2.105 
+                c-1.991-1.301-3.088-3-3.088-4.782c0-1.784 1.097-3.484 3.088-4.784c2.081-1.358 4.861-2.106 7.828-2.106 c2.967 0 5.7 
+                0.7 7.8 2.106c1.99 1.3 3.1 3 3.1 4.784C24.859 18.6 23.8 20.3 21.8 21.57z M25.787 14.6 
+                c-0.432-1.084-1.191-2.095-2.244-2.977c0.273-0.156 0.59-0.245 0.928-0.245c1.035 0 1.9 0.8 1.9 1.9 
+                C26.354 13.8 26.1 14.3 25.8 14.605z"></path></g></svg>
+            </span>
+            <span class="text">reddit</span>
+        </a>
+    </li>
+    <li class="googleplus small" data-initwidth="16.666666666666668" data-size="52" style="width: 42px;">
+        <!-- Replace href with your meta and URL information.  -->
+        <a href="https://plus.google.com/share?url=http%3a%2f%2fwww.codeproject.com%2fArticles%2f850834%2fInstalling-and-Using-SQLite-on-Windows" class="popup">
+            <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
+                    <g>
+                        <g>
+                            <path d="M14.703,15.854l-1.219-0.948c-0.372-0.308-0.88-0.715-0.88-1.459c0-0.748,0.508-1.223,0.95-1.663
+                                c1.42-1.119,2.839-2.309,2.839-4.817c0-2.58-1.621-3.937-2.399-4.581h2.097l2.202-1.383h-6.67c-1.83,0-4.467,0.433-6.398,2.027
+                                C3.768,4.287,3.059,6.018,3.059,7.576c0,2.634,2.022,5.328,5.604,5.328c0.339,0,0.71-0.033,1.083-0.068
+                                c-0.167,0.408-0.336,0.748-0.336,1.324c0,1.04,0.551,1.685,1.011,2.297c-1.524,0.104-4.37,0.273-6.467,1.562
+                                c-1.998,1.188-2.605,2.916-2.605,4.137c0,2.512,2.358,4.84,7.289,4.84c5.822,0,8.904-3.223,8.904-6.41
+                                c0.008-2.327-1.359-3.489-2.829-4.731H14.703z M10.269,11.951c-2.912,0-4.231-3.765-4.231-6.037c0-0.884,0.168-1.797,0.744-2.511
+                                c0.543-0.679,1.489-1.12,2.372-1.12c2.807,0,4.256,3.798,4.256,6.242c0,0.612-0.067,1.694-0.845,2.478
+                                c-0.537,0.55-1.438,0.948-2.295,0.951V11.951z M10.302,25.609c-3.621,0-5.957-1.732-5.957-4.142c0-2.408,2.165-3.223,2.911-3.492
+                                c1.421-0.479,3.25-0.545,3.555-0.545c0.338,0,0.52,0,0.766,0.034c2.574,1.838,3.706,2.757,3.706,4.479
+                                c-0.002,2.073-1.736,3.665-4.982,3.649L10.302,25.609z"></path>
+                            <polygon points="23.254,11.89 23.254,8.521 21.569,8.521 21.569,11.89 18.202,11.89 18.202,13.604 21.569,13.604 21.569,17.004
+                                23.254,17.004 23.254,13.604 26.653,13.604 26.653,11.89      "></polygon>
+                        </g>
+                    </g>
+                </svg>
+            </span>
+            <span class="text">google+</span>
+        </a>
+    </li>
+    
+</ul>
+<!-- Buttons end here -->
+
+				        </div> 
+    			        
+
+
+						
+						<h2 id="ctl00_AboutHeading">About the Author</h2>
+						    
+
+
+<div class="author-wrapper">
+
+    <div class="pic-wrapper"> 
+        <img id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberPhoto" class="profile-pic" src="./Installing and Using SQLite on Windows - CodeProject_files/{9d8605af-cd1a-452b-9858-837bf9aa266c}.png" style="border-width:0px;transform:rotate(1deg);">
+
+    </div>
+
+    <div class="container-member">  
+        <b><a id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberProfileLink" class="author" href="http://www.codeproject.com/Members/xivSolutions">John Atten</a></b>
+
+        <table class="extended">
+        <tbody><tr>
+            <td rowspan="2" nowrap="" valign="middle">
+            <div id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_FollowOn" class="follow">
+	            <a href="http://www.twitter.com/xivSolutions"><img style="vertical-align:middle;border:0;height:24px;width:24px" alt="Twitter" src="./Installing and Using SQLite on Windows - CodeProject_files/twitter32.png"></a> 
+	            <a href="https://plus.google.com/httpsplusgooglecomu0115011708567871897637posts"><img style="vertical-align:middle;border:0;height:24px;width246px" alt="Google+" src="./Installing and Using SQLite on Windows - CodeProject_files/googleplus32.png"></a> 
+	            
+            </div>
+            </td>
+            <td width="100%">
+                <div class="company">
+                    <span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberJobTitle">Software Developer</span>
+	                <span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberCompany">XIV Solutions</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberLocation">United States <img src="./Installing and Using SQLite on Windows - CodeProject_files/US.gif" alt="United States" width="16px" height="11px"></span>
+            </td>
+        </tr>
+        </tbody></table>
+    </div>
+
+    <div class="description">
+        My name is John Atten, and my username on many of my online accounts is xivSolutions. I am Fascinated by all things technology and software development. I work mostly with C#, Javascript/Node.js, Various flavors of databases, and anything else I find interesting. I am always looking for new information, and value your feedback (especially where I got something wrong!)
+
+        
+    </div>
+
+</div><br>
+						
+						
+
+						<div class="clearfix"></div>
+
+						<div style="padding-top:8px">
+							
+						</div>
+
+					
+
+				    
+					</form>
+
+				</div>
+
+				
+				<div class="bottom-promo"> 
+				    <div class="msg-728x90" data-format="728x90" data-type="ad" data-publisher="lqm.codeproject.site" data-zone="Database/Database/General" data-loadonview="true" data-tags="SQL, Windows, Beginner, Intermediate, All-Topics, SQLite,rating4.5,pos_bottom"></div>
+				</div>
+				
+
+                
+        <h2 id="ctl00_AlsoRead_RelatedResults_ctl00_Header" class="also-read">You may also be interested in...</h2>
+        <table class="spaced content-list also-read">
+    
+	    <tbody><tr>
+        <td class="content-list-item" width="50%" valign="top">
+            <div class="thumbnail"><a id="ctl00_AlsoRead_RelatedResults_ctl01_Thumbnail" href="http://www.codeproject.com/Articles/746191/SQLite-Helper-Csharp"><img src="./Installing and Using SQLite on Windows - CodeProject_files/article100x80.png" alt="" style="border-width:0px;"></a></div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl01_Link" href="http://www.codeproject.com/Articles/746191/SQLite-Helper-Csharp">SQLite Helper (C#)</a></div>
+                
+            </div>
+        </td>
+	
+        <td class="content-list-item" width="50%" valign="top">
+            <div class="thumbnail"><a id="ctl00_AlsoRead_RelatedResults_ctl02_Thumbnail" href="http://www.codeproject.com/ResearchLibrary/210/Using-Apache-Hadoop-with-IBM-BigInsights-to-Delive"><img src="./Installing and Using SQLite on Windows - CodeProject_files/LibraryItemThumbnail_210_100x130.png" alt="" style="border-width:0px;"></a></div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl02_Link" href="http://www.codeproject.com/ResearchLibrary/210/Using-Apache-Hadoop-with-IBM-BigInsights-to-Delive">Using Apache Hadoop with IBM BigInsights to Deliver Value Quickly</a></div>
+                
+            </div>
+        </td>
+	    </tr>
+	
+	    <tr>
+        <td class="content-list-item" width="50%" valign="top">
+            <div class="thumbnail"><a id="ctl00_AlsoRead_RelatedResults_ctl03_Thumbnail" href="http://www.codeproject.com/Articles/1091675/SQLite"><img src="./Installing and Using SQLite on Windows - CodeProject_files/article100x80.png" alt="" style="border-width:0px;"></a></div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl03_Link" href="http://www.codeproject.com/Articles/1091675/SQLite">SQLite</a></div>
+                
+            </div>
+        </td>
+	
+        <td class="content-list-item" width="50%" valign="top">
+            <div class="thumbnail"><a id="ctl00_AlsoRead_RelatedResults_ctl04_Thumbnail" href="http://www.codeproject.com/Articles/1086350/Case-Study-Build-a-Smart-Conference-System-by-Enab"><img src="./Installing and Using SQLite on Windows - CodeProject_files/Thumb-1086350.png" alt="" style="border-width:0px;"></a></div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl04_Link" href="http://www.codeproject.com/Articles/1086350/Case-Study-Build-a-Smart-Conference-System-by-Enab">Case Study：Build a Smart Conference System by Enabling ZigBee on the Intel® Edison Platform</a></div>
+                
+            </div>
+        </td>
+	    </tr>
+	
+	    <tr>
+        <td class="content-list-item" width="50%" valign="top">
+            <div class="thumbnail"><a id="ctl00_AlsoRead_RelatedResults_ctl05_Thumbnail" href="http://www.codeproject.com/Articles/236918/Using-SQLite-embedded-database-with-entity-framewo"><img src="./Installing and Using SQLite on Windows - CodeProject_files/Thumb-236918.jpg" alt="" style="border-width:0px;"></a></div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl05_Link" href="http://www.codeproject.com/Articles/236918/Using-SQLite-embedded-database-with-entity-framewo">Using SQLite Embedded Database with Entity Framework and Linq-to-SQL</a></div>
+                
+            </div>
+        </td>
+	
+        <td class="content-list-item" width="50%" valign="top">
+            <div class="thumbnail"><a id="ctl00_AlsoRead_RelatedResults_ctl06_Thumbnail" href="http://www.codeproject.com/Articles/1085650/Hack-Grunt-to-Make-Your-Website-Awesome"><img src="./Installing and Using SQLite on Windows - CodeProject_files/article100x80.png" alt="" style="border-width:0px;"></a></div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl06_Link" href="http://www.codeproject.com/Articles/1085650/Hack-Grunt-to-Make-Your-Website-Awesome">Hack Grunt to Make Your Website Awesome</a></div>
+                
+            </div>
+        </td>
+	    </tr>
+	
+		</tbody></table>
+	
+
+
+
+				
+				
+
+					<h2>Comments and Discussions</h2>
+					<a class="float-left" name="_comments" id="_comments">&nbsp;</a><div id="_MessageBoardctl00_MessageBoard" onclick="return SwitchMessage(event, null)">
+<table id="ForumTable" class="forum compact" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td class="header1 callout"><b>You must <a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f850834%2fInstalling-and-Using-SQLite-on-Windows%3ffid%3d1874706%26df%3d90%26mpp%3d25%26prof%3dFalse%26sort%3dPosition%26view%3dNormal%26spc%3dCompact">Sign In</a> to use this message board.</b></td>
+</tr><tr>
+<td><table width="100%" border="0" cellpadding="3px" cellspacing="0">
+<tbody><tr class="header1">
+<td colspan="2" style="white-space:nowrap;"><div class="container">
+<div class="float-right">
+<form action="http://www.codeproject.com/Search.aspx?sbo=fm" method="get" class="searchbar">
+<input type="hidden" name="fid" value="1874706"><input type="hidden" name="sbo" value="fm"><b>Search Comments </b><input type="search" class="search" name="qf">&nbsp;<input type="submit" value="Go" class="button">
+</form>
+</div>
+</div></td>
+</tr><tr class="header2">
+<td></td><td style="width:100%;"><div style="text-align:right;">
+<form action="http://www.codeproject.com/script/Forums/SetOptions.aspx?floc=%2fArticles%2f850834%2fInstalling-and-Using-SQLite-on-Windows&amp;fid=1874706&amp;df=90&amp;mpp=25&amp;prof=False&amp;sort=Position&amp;view=Normal&amp;spc=Compact" method="get" style="margin:0;padding:0;">
+<input type="hidden" name="fid" value="1874706"><input type="hidden" name="currentQS" value="?floc=%2fArticles%2f850834%2fInstalling-and-Using-SQLite-on-Windows&amp;fid=1874706&amp;df=90&amp;mpp=25&amp;prof=False&amp;sort=Position&amp;view=Normal&amp;spc=Compact"><input type="hidden" name="floc" value="/Articles/850834/Installing-and-Using-SQLite-on-Windows"><input type="checkbox" name="prof" id="prof" style="vertical-align:middle;"><label for="prof">Profile popups</label>&nbsp;&nbsp;&nbsp;&nbsp;Spacing<select size="1" class="dropdown" name="spc">
+<option value="Relaxed">Relaxed</option><option selected="" value="Compact">Compact</option><option value="Tight">Tight</option>
+</select>&nbsp;&nbsp;Layout<select size="1" class="dropdown" name="view">
+<option selected="" value="Normal">Normal</option><option value="Topic">Open Topics</option><option value="Expanded">Open All</option><option value="Thread">Thread View</option>
+</select>&nbsp;&nbsp;Per page<select size="1" class="dropdown" name="mpp">
+<option value="10">10</option><option selected="" value="25">25</option><option value="50">50</option>
+</select>&nbsp;&nbsp;&nbsp;<input type="submit" value="Update" name="SetOpt" class="button">
+</form>
+</div></td>
+</tr>
+</tbody></table></td>
+</tr><tr>
+<td><a name="xx0xx"></a><table border="0" cellpadding="2px" cellspacing="0" width="100%">
+<tbody><tr class="navbar">
+<td></td><td style="text-align:right;width:50%;"></td><td style="text-align:right;white-space:nowrap;"><span class="nav-link disabled">First</span> <span class="nav-link disabled">Prev</span> <span class="nav-link disabled">Next</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%" class="fixed-layout blank-background">
+<tbody><tr>
+<td><img src="./Installing and Using SQLite on Windows - CodeProject_files/t(1).gif" border="0" width="1px" height="5px" alt=""></td>
+</tr><tr id="F4982523_h0" class="header hover-row root">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="20px" class="indent"><a name="xx4982523xx"></a><img height="16px" width="16px" align="top" src="./Installing and Using SQLite on Windows - CodeProject_files/msg_general.gif" alt="General"></td><td class="subject hover-container"><a class="message-link" name="4982523" parent="0" thread="4982523" href="http://www.codeproject.com/Messages/4982523/My-vote-of.aspx">My vote of 5</a> <a onclick="return Pin(this);" rel="nofollow" href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows#" title="Click to pin message"><img src="./Installing and Using SQLite on Windows - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">DrABELL</span><span class="date">18-Jan-15  13:52</span>
+</div></td><td class="icon"><img border="0" src="./Installing and Using SQLite on Windows - CodeProject_files/icn-pro-16.png" title="professional" alt="professional" height="16px"></td><td class="author"><span><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=4594793">DrABELL</a></span></td><td class="date"><span>18-Jan-15  13:52&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4982523_h1" class="content root selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:20px;"><div class="voteform vertical" ownerid="4594793" msgid="4982523" votingtype="GoodOrBad">
+
+</div><img src="./Installing and Using SQLite on Windows - CodeProject_files/t(1).gif" height="1px" width="20px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2">Excellent article addressing rather important development issues! Really good in both practical and didactic aspects. Solid 5* and my vote in survey!<br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="http://www.codeproject.com/script/Membership/LogOn.aspx?rp=/Articles/850834/Installing-and-Using-SQLite-on-Windows">Sign In</a>·<wbr><a href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows?fid=1874706&amp;df=90&amp;mpp=25&amp;sort=Position&amp;spc=Compact&amp;tid=4982523" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="http://www.codeproject.com/Messages/4982523/My-vote-of.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4982523" data-ref="3_4982523" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4965291_h0" class="header hover-row root">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="20px" class="indent"><a name="xx4965291xx"></a><img height="16px" width="16px" align="top" src="./Installing and Using SQLite on Windows - CodeProject_files/msg_general.gif" alt="General"></td><td class="subject hover-container"><a class="message-link" name="4965291" parent="0" thread="4965291" href="http://www.codeproject.com/Messages/4965291/My-vote-of.aspx">My vote of 5</a> <a onclick="return Pin(this);" rel="nofollow" href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows#" title="Click to pin message"><img src="./Installing and Using SQLite on Windows - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">L Hills</span><span class="date">17-Dec-14  5:15</span>
+</div></td><td class="icon"><img border="0" src="./Installing and Using SQLite on Windows - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="author"><span><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=640727">L Hills</a></span></td><td class="date"><span>17-Dec-14  5:15&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4965291_h1" class="content root selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:20px;"><div class="voteform vertical" ownerid="640727" msgid="4965291" votingtype="GoodOrBad">
+
+</div><img src="./Installing and Using SQLite on Windows - CodeProject_files/t(1).gif" height="1px" width="20px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2">Great article. Especially useful as SqlLite looks to be the preferred DB for Windows Phone and App Store applications.<br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="http://www.codeproject.com/script/Membership/LogOn.aspx?rp=/Articles/850834/Installing-and-Using-SQLite-on-Windows">Sign In</a>·<wbr><a href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows?fid=1874706&amp;df=90&amp;mpp=25&amp;sort=Position&amp;spc=Compact&amp;tid=4965291" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="http://www.codeproject.com/Messages/4965291/My-vote-of.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4965291" data-ref="3_4965291" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4959529_h0" class="header hover-row root">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="20px" class="indent"><a name="xx4959529xx"></a><img height="16px" width="16px" align="top" src="./Installing and Using SQLite on Windows - CodeProject_files/msg_general.gif" alt="General"></td><td class="subject hover-container"><a class="message-link" name="4959529" parent="0" thread="4959529" href="http://www.codeproject.com/Messages/4959529/My-vote-of.aspx">My vote of 5</a> <a onclick="return Pin(this);" rel="nofollow" href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows#" title="Click to pin message"><img src="./Installing and Using SQLite on Windows - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">JCahyaatnttearjee</span><span class="date">9-Dec-14  2:37</span>
+</div></td><td class="icon"><img border="0" src="./Installing and Using SQLite on Windows - CodeProject_files/icn-pro-16.png" title="professional" alt="professional" height="16px"></td><td class="author"><span><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=9606244">JCahyaatnttearjee</a></span></td><td class="date"><span>9-Dec-14  2:37&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4959529_h1" class="content root selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:20px;"><div class="voteform vertical" ownerid="9606244" msgid="4959529" votingtype="GoodOrBad">
+
+</div><img src="./Installing and Using SQLite on Windows - CodeProject_files/t(1).gif" height="1px" width="20px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2">My vote of 5ed..<br>
+Nice Article..<br>
+It's really Helpful ..<br>
+Thank You.. <img src="./Installing and Using SQLite on Windows - CodeProject_files/smiley_smile.gif" align="top" alt="Smile | :)"> <br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="http://www.codeproject.com/script/Membership/LogOn.aspx?rp=/Articles/850834/Installing-and-Using-SQLite-on-Windows">Sign In</a>·<wbr><a href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows?fid=1874706&amp;df=90&amp;mpp=25&amp;sort=Position&amp;spc=Compact&amp;tid=4959529" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="http://www.codeproject.com/Messages/4959529/My-vote-of.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4959529" data-ref="3_4959529" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4958644_h0" class="header hover-row root">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="20px" class="indent"><a name="xx4958644xx"></a><img height="16px" width="16px" align="top" src="./Installing and Using SQLite on Windows - CodeProject_files/msg_question.gif" alt="Question"></td><td class="subject hover-container"><a class="message-link" name="4958644" parent="0" thread="4958644" href="http://www.codeproject.com/Messages/4958644/My-vote-of.aspx">My vote of 5</a> <a onclick="return Pin(this);" rel="nofollow" href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows#" title="Click to pin message"><img src="./Installing and Using SQLite on Windows - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">Toni Fasth</span><span class="date">7-Dec-14  21:34</span>
+</div></td><td class="icon"><img border="0" src="./Installing and Using SQLite on Windows - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="author"><span><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=10698997">Toni Fasth</a></span></td><td class="date"><span>7-Dec-14  21:34&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4958644_h1" class="content root selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:20px;"><div class="voteform vertical" ownerid="10698997" msgid="4958644" votingtype="GoodOrBad">
+
+</div><img src="./Installing and Using SQLite on Windows - CodeProject_files/t(1).gif" height="1px" width="20px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2">Great introduction to SQLite. Looking forward to Part 2 (VS Magic).<br>
+<br>
+P.S. Please fix the formatting garbage in some of the code. I read your article @ your homepage before I found it here, and there all looked great. <img src="./Installing and Using SQLite on Windows - CodeProject_files/smiley_smile.gif" align="top" alt="Smile | :)"> <br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="http://www.codeproject.com/script/Membership/LogOn.aspx?rp=/Articles/850834/Installing-and-Using-SQLite-on-Windows">Sign In</a>·<wbr><a href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows?fid=1874706&amp;df=90&amp;mpp=25&amp;sort=Position&amp;spc=Compact&amp;tid=4958644" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="http://www.codeproject.com/Messages/4958644/My-vote-of.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4958644" data-ref="3_4958644" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4958796_h0" class="header hover-row">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="38px" class="indent"><a name="xx4958796xx"></a><img height="16px" width="16px" align="top" src="./Installing and Using SQLite on Windows - CodeProject_files/msg_answer.gif" alt="Answer"></td><td class="subject hover-container"><a class="message-link" name="4958796" parent="4958644" thread="4958644" href="http://www.codeproject.com/Messages/4958796/Re-My-vote-of.aspx">Re: My vote of 5</a> <a onclick="return Pin(this);" rel="nofollow" href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows#" title="Click to pin message"><img src="./Installing and Using SQLite on Windows - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">John Atten</span><span class="date">8-Dec-14  2:59</span>
+</div></td><td class="icon"><img border="0" src="./Installing and Using SQLite on Windows - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="author"><span><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=6750249">John Atten</a></span></td><td class="date"><span>8-Dec-14  2:59&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4958796_h1" class="content selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:38px;"><div class="voteform vertical" ownerid="6750249" msgid="4958796" votingtype="GoodOrBad">
+
+</div><img src="./Installing and Using SQLite on Windows - CodeProject_files/t(1).gif" height="1px" width="38px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2"><div class="parent"><a rel="nofollow" onclick="return SwitchMessage(null,4958644);" href="http://www.codeproject.com/Messages/4958644/My-vote-of.aspx"><img src="./Installing and Using SQLite on Windows - CodeProject_files/arrow-up24.png" title="Go to Parent" style="width:16px;height:16px;border:0"></a></div>Should be fixed now. There is some odd issue with the syntax highlighter when these pull over to CP, and I *always* have to go in and repair. I think you just got to it before I finished. <br>
+<br>
+See HERE: <a href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows">The Updated Article</a><br>
+<br>
+This comment appears to be associated with the original blog pull.<br>
+<br>
+Thanks for reading, and for the feedback!  <img src="./Installing and Using SQLite on Windows - CodeProject_files/smiley_smile.gif" align="top" alt="Smile | :)"> <br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="http://www.codeproject.com/script/Membership/LogOn.aspx?rp=/Articles/850834/Installing-and-Using-SQLite-on-Windows">Sign In</a>·<wbr><a href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows?fid=1874706&amp;df=90&amp;mpp=25&amp;sort=Position&amp;spc=Compact&amp;tid=4958644" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="http://www.codeproject.com/Messages/4958796/Re-My-vote-of.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4958796" data-ref="3_4958796" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr>
+<td><img src="./Installing and Using SQLite on Windows - CodeProject_files/t(1).gif" border="0" width="1px" height="5px" alt=""></td>
+</tr><tr>
+<td><table width="100%" cellpadding="2px" cellspacing="0">
+<tbody><tr class="footer">
+<td><span class="last-visit desktop-only tablet-only">Last Visit: 31-Dec-99  19:00 &nbsp; &nbsp; Last Update: 17-Apr-16  12:06</span></td><td><a rel="nofollow" href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows?fid=1874706&amp;df=90&amp;mpp=25&amp;prof=False&amp;sort=Position&amp;view=Normal&amp;spc=Compact">Refresh</a></td><td style="text-align:right;white-space:nowrap;"><input id="_mbnUrl" type="hidden" value="/Articles/850834/Installing-and-Using-SQLite-on-Windows?fid=1874706&amp;df=90&amp;mpp=25&amp;prof=False&amp;sort=Position&amp;view=Normal&amp;spc=Compact&amp;fr=6"><span class="nav-link selected">1</span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table>
+</div><p class="small-text"><img align="top" src="./Installing and Using SQLite on Windows - CodeProject_files/msg_general.gif" width="16px" height="16px" alt="General"> General &nbsp;&nbsp; <img align="top" src="./Installing and Using SQLite on Windows - CodeProject_files/msg_news.gif" width="16px" height="16px" alt="News"> News &nbsp;&nbsp; <img align="top" src="./Installing and Using SQLite on Windows - CodeProject_files/msg_idea.gif" width="16px" height="16px" alt="Suggestion"> Suggestion &nbsp;&nbsp; <img align="top" src="./Installing and Using SQLite on Windows - CodeProject_files/msg_question.gif" width="16px" height="16px" alt="Question"> Question &nbsp;&nbsp; <img align="top" src="./Installing and Using SQLite on Windows - CodeProject_files/msg_bug.gif" width="16px" height="16px" alt="Bug"> Bug &nbsp;&nbsp; <img align="top" src="./Installing and Using SQLite on Windows - CodeProject_files/msg_answer.gif" width="16px" height="16px" alt="Answer"> Answer &nbsp;&nbsp; <img align="top" src="./Installing and Using SQLite on Windows - CodeProject_files/msg_joke.gif" width="16px" height="16px" alt="Joke"> Joke &nbsp;&nbsp; <img align="top" src="./Installing and Using SQLite on Windows - CodeProject_files/msg_kudos.gif" width="16px" height="16px" alt="Praise"> Praise &nbsp;&nbsp; <img align="top" src="./Installing and Using SQLite on Windows - CodeProject_files/msg_rant.gif" width="16px" height="16px" alt="Rant"> Rant &nbsp;&nbsp; <img align="top" src="./Installing and Using SQLite on Windows - CodeProject_files/msg_admin.gif" width="16px" height="16px" alt="Admin"> Admin &nbsp;&nbsp; </p><p class="small-text">Use Ctrl+Left/Right to switch messages, Ctrl+Up/Down to switch threads, Ctrl+Shift+Left/Right to switch pages.</p>
+				
+
+			</div>
+			
+		</td>
+		<td width="170px" class="article-wing-right">
+			<div id="ctl00_RightSideBar" class="container-article-info">
+
+                <div id="RHSticky" class="container-article-info-sticky stuck" style="position: fixed; top: 10px; left: 1023.5px;">
+        			
+
+
+<div class="article-summary">
+
+    
+
+
+    <ul class="prize-list">
+<li>Best Database Article of December 2014  (Second Prize)</li>
+</ul>
+
+    
+
+    
+</div>
+
+				    
+
+				    <div style="width:160px;margin: 10px auto;">
+					    <div class="msg-160x600" data-format="160x600" data-type="ad" data-publisher="lqm.codeproject.site" data-zone="Database/Database/General" data-tags="SQL, Windows, Beginner, Intermediate, All-Topics, SQLite,rating4.5"></div>
+				    </div>
+
+                    
+
+				    
+
+				    
+
+				    
+
+                    <div class="anchorLink gototop" id="gototop">
+                        <a id="ctl00_GoToTop" href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows#_articleTop">Go to top</a>
+                    </div>
+
+				</div>
+
+			</div>
+		</td>
+		</tr></tbody></table>
+
+		
+		<div class="theme1-background" style="height:2px" id="stickyStop"></div>
+
+		<div class="extended tiny-text">
+			<div class="row">
+				<div class="float-left">
+					<a id="ctl00_PermaLink" itemprop="url" href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows">Permalink</a> | 
+					<a id="ctl00_AdvertiseLink" href="http://developermedia.com/">Advertise </a> |
+					<a id="ctl00_PrivacyLink" href="http://www.codeproject.com/info/privacy.aspx">Privacy</a> |
+                    <a id="ctl00_TermsOfUseLink" href="http://www.codeproject.com/info/TermsOfUse.aspx">Terms of Use</a> |
+					<a id="ctl00_Mobile">Mobile</a>
+					<br>
+								
+					
+					Web02 |
+					2.8.160413.1 |
+					Last Updated 9 Dec 2014								
+				</div>
+
+                <div id="ctl00_GoogleTranslate" class="translate float-left"><div class="skiptranslate goog-te-gadget" dir="ltr"><div id=":0.targetLanguage" class="goog-te-gadget-simple" style="white-space: nowrap;"><img src="./Installing and Using SQLite on Windows - CodeProject_files/cleardot.gif" class="goog-te-gadget-icon" style="background-image: url(&quot;https://translate.googleapis.com/translate_static/img/te_ctrl3.gif&quot;); background-position: -65px 0px;"><span style="vertical-align: middle;"><a class="goog-te-menu-value" href="javascript:void(0)"><span>Chọn Ngôn ngữ</span><img src="./Installing and Using SQLite on Windows - CodeProject_files/cleardot.gif" width="1" height="1"><span style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(187, 187, 187);">​</span><img src="./Installing and Using SQLite on Windows - CodeProject_files/cleardot.gif" width="1" height="1"><span style="color: rgb(155, 155, 155);">▼</span></a></span></div></div></div>      
+
+				<div class="float-right align-right">
+					Article Copyright 2014 by John Atten<br>Everything else
+					Copyright © <a href="mailto:webmaster@codeproject.com">CodeProject</a>, 1999-2016 <br>
+				</div>
+
+				
+
+
+<div class="page-width">
+Layout: <a id="ctl00_PageWidth_FixedT" title="Fixed width layout" rel="nofollow" class=" active" href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows?PageFlow=FixedWidth">fixed</a>
+|
+<a id="ctl00_PageWidth_FluidT" title="Fluid layout" rel="nofollow" href="http://www.codeproject.com/Articles/850834/Installing-and-Using-SQLite-on-Windows?PageFlow=Fluid">fluid</a>
+</div>
+
+
+
+			</div>
+		</div>
+		
+
+		<br clear="all">
+		
+			
+
+	</div> 
+	</div>
+</div>
+
+
+<img id="ctl00_Audience" src="http://pubads.g.doubleclick.net/activity;dc_iu=/6839/DFPAudiencePixel;ord=&#39;635965276140725305&#39;;dc_seg=33705370?" style="border-width:0px;height:1px;width:1px;">
+
+
+
+<script type="text/javascript" language="Javascript" src="./Installing and Using SQLite on Windows - CodeProject_files/jquery.min.js"></script><script type="text/javascript">//<![CDATA[
+if (typeof jQuery == 'undefined') {
+    document.write(unescape("%3Cscript src='/script/JS/jquery-1.6.2.min.js' type='text/javascript' %3E%3C/script%3E"));
+}//]]></script>
+<script type="text/javascript" language="Javascript" src="./Installing and Using SQLite on Windows - CodeProject_files/article.min.js"></script>
+<script type="text/javascript" language="Javascript" src="./Installing and Using SQLite on Windows - CodeProject_files/element.js"></script>
+<script type="text/javascript" language="Javascript" src="./Installing and Using SQLite on Windows - CodeProject_files/navbar.min.js"></script>
+<script type="text/javascript" language="Javascript" src="./Installing and Using SQLite on Windows - CodeProject_files/Notifications.min.js"></script>
+<script type="text/javascript" language="Javascript">//<![CDATA[
+$(document).ready(function () { processCodeBlocks.Initialise('#contentdiv'); });
+function googleTranslateElementInit() {  new google.translate.TranslateElement({   pageLanguage: 'en',   layout: google.translate.TranslateElement.InlineLayout.SIMPLE,   autoDisplay: false,   gaTrack: true,   gaId: 'UA-1735123-1'},  'ctl00_GoogleTranslate');}
+$(document).ready(function() { anchorAnimate();
+$('#RHSticky').sticky($('#stickyStop'));
+$('#ctl00_Nav').sticky($('#stickyStop'));
+});
+$(function ()
+                {
+                    $('.oauth').click(function () {
+                        $this = $(this);
+                        href = $this.attr('href');
+                        var myWindow = window.open(href, 'popup',
+                                    'width=800,height=600,location=0,menubar=0,resizeable=0,scrollbars=0,toolbar=0');
+                        myWindow.focus();
+                        var timer = setInterval(function () {
+                                        if (myWindow.closed) {
+                                            clearInterval(timer);
+                                            // window.location.reload(); // May do a POST reload, shows a warning
+                                            window.location = window.location; // force a GET reload
+                                        }
+                                    }, 200);
+                        return false;
+                    });
+                });
+var oSrchFlt = false, oSrchBox=false,srchBoxFoc=false;
+$(document).ready(function() {
+ if(InitWatermark)InitWatermark('sb_tb', 'Search for articles, questions, tips');
+ var sbar = $('#sb_tb'); 
+ var sfilter = $('#SearchFilter');
+ if (sbar && sfilter) {
+  sfilter.removeClass('popup'); sfilter.hide(); sfilter.removeClass('open');
+  sbar.blur(function() {
+ if (!oSrchFlt) {sfilter.hide(); sfilter.removeClass('open');}
+ srchBoxFoc=false;
+ });
+  sbar.focus(function() {
+ oSrchFlt=false; srchBoxFoc=true;
+ sfilter.show(); sfilter.addClass('open');
+ });
+  sbar.mouseleave(function() { oSrchBox=false; });
+  sbar.mouseover(function() { oSrchBox=true; });
+  sfilter.mouseleave(function() { oSrchFlt=false; if (!srchBoxFoc&&!oSrchBox) { sfilter.hide(); sfilter.removeClass('open'); }});
+  sfilter.mouseover(function() { oSrchFlt=true; });
+ }
+});
+$('#clear-rate_ctl00_RateArticle_RSU').click(function () {    $('#ctl00_RateArticle_RSU').hide(); return false;});$("#ctl00_RateArticle_RateItemWrapper")   .removeClass("container-rating")   .hover( function() { $('#ctl00_RateArticle_RSU').fadeIn('fast'); },            function() { $('#ctl00_RateArticle_RSU').fadeOut('fast'); } );
+function PostBack_ctl00_RateArticle_RateItemWrapper() {
+  return rateItem(850834,2,3,true,true,0,'LargeStars');
+}
+
+                        function getVotesHistogram(objectId, objectTypeId, containerId, loadingId) {
+                            if (!$('#' + containerId).attr('alreadyRequested')){
+                                $.ajax({
+                                    url: '/script/Ratings/Ajax/Histogram.aspx?obid=' + objectId + '&obtid='+objectTypeId,
+                                    success: function (data) {
+                                        $('#' + containerId).html(data);
+                                        $('#' + loadingId).hide();
+                                    }
+                                });
+                                $('#' + containerId).attr('alreadyRequested', 'true');
+                            }
+                        }
+$(document).ready(function() {   new starRating('#ctl00_RateArticle_VoteFormDiv', PostBack_ctl00_RateArticle_RateItemWrapper,'ctl00_RateArticle');
+  $('#ctl00_RateArticle_RB').mouseenter(function() {     getVotesHistogram(850834,2   ,'ctl00_RateArticle_Histogram','ctl00_RateArticle_Loading');  })})
+$(document).ready(function() { $('#ctl00_RateArticle_SubmitRateBtn').hide(); });
+$(document).ready(function() { $('#ctl00_RateArticle_SubmitRateBtn').hide(); });function ChkRtctl00_RateArticle(){}
+
+forumDir = '/script/Forums/';
+allowReporting = false;
+allowRating = false;
+allowRatingDisplay = true;
+var smoothScroll = true;
+Selected        = -1;
+oldTitle        = document.title;
+minMessageScore = 1;
+minMessageScore = 5;
+abuseScore      = -2;
+spamScore       = -1;
+getRatingUrl    = '/script/Ratings/Ajax/GetRatings.aspx';
+getRatingRefKey = 'obrs';
+
+
+//]]>
+</script>
+
+
+
+<canvas id="cv1" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="./Installing and Using SQLite on Windows - CodeProject_files/translate_24dp.png" width="20" height="20"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">Văn bản gốc</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">Đóng góp bản dịch hay hơn</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div><canvas id="cv2" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas><iframe frameborder="0" class="goog-te-menu-frame skiptranslate" style="visibility: visible; box-sizing: content-box; width: 1385px; height: 263px; display: none;"></iframe></body></html>
